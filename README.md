@@ -10,7 +10,7 @@ These projects demonstrate how I translate business problems into technical solu
 
 ## Projects
 
-### 01 | Consultation Lead Capture & CRM Integration
+### [01 | Consultation Lead Capture & CRM Integration](./01-consultation-lead-handoff/)
 **HubSpot · Google Calendar · n8n · Salesforce · REST APIs · SOQL**
 
 **Business problem:** Consultation enquiries captured in HubSpot need to reach Salesforce without manual re-entry or duplicate Lead creation.
@@ -21,7 +21,7 @@ These projects demonstrate how I translate business problems into technical solu
 
 **Status:** Tested MVP. Automated booking-event detection remains future work.
 
-### 02 | Job Intelligence Engine
+### [02 | Job Intelligence Engine](./02-job-intelligence-engine/)
 **Postman · JavaScript · External Job APIs · Salesforce · OAuth 2.0 / PKCE**
 
 **Business problem:** Job opportunities from multiple sources are difficult to consolidate, standardize, score, and track.
