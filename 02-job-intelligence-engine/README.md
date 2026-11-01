@@ -97,4 +97,4 @@ The solution remains an evolving prototype. Potential enhancements include sched
 
 ## 7. Portfolio Artifacts
 
-The repository will include sanitized Postman collections, selected JavaScript examples, architecture documentation and test evidence. No active API credentials or personal access tokens will be published.
+The repository includes sanitized Postman collections, selected JavaScript examples, architecture documentation and test evidence. No active API credentials or personal access tokens have been published.
