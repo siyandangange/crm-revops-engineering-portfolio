@@ -1,0 +1,205 @@
+{
+  "name": "HubSpot to Salesforce - Consultation Lead Handoff (Portfolio Template)",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1104,
+        -304
+      ],
+      "id": "f1170f4e-8a7d-47ba-b621-d69ad0f54f05",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "authentication": "appToken",
+        "operation": "getAll",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.2,
+      "position": [
+        -832,
+        -208
+      ],
+      "id": "564d0e33-3e15-443b-be76-4f6e30517c20",
+      "name": "Get many contacts"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 4
+          },
+          "conditions": [
+            {
+              "id": "e9ee0033-2a42-416a-ba1a-6ee131ab2995",
+              "leftValue": "={{ $json[\"identity-profiles\"]?.[0]?.identities?.find(i => i.type === \"EMAIL\")?.value }}",
+              "rightValue": "test@example.com",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.4,
+      "position": [
+        -608,
+        -208
+      ],
+      "id": "e7a85b51-af5b-4bd3-b91f-e2e99220ef0d",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "url": "https://YOUR_SALESFORCE_INSTANCE.my.salesforce.com/services/data/v61.0/query",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ \"SELECT Id, Email FROM Lead WHERE Email = '\" + $json[\"identity-profiles\"]?.[0]?.identities?.find(i => i.type === \"EMAIL\")?.value.replace(/'/g, \"\\\\'\") + \"' LIMIT 1\" }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        -384,
+        -208
+      ],
+      "id": "28229b5b-80f7-4ac6-b173-c7b39254903a",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 4
+          },
+          "conditions": [
+            {
+              "id": "2e63a214-1af9-4ef2-8877-e2d95952c47a",
+              "leftValue": "={{ $json.totalSize }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.4,
+      "position": [
+        -160,
+        -208
+      ],
+      "id": "e12447d7-59a1-4df5-a7ab-3068b0190309",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://YOUR_SALESFORCE_INSTANCE.my.salesforce.com/services/data/v61.0/sobjects/Lead",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "oAuth2Api",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{\n  {\n    Company: $('Filter').first().json.properties.company?.value || 'Individual',\n    LastName: $('Filter').first().json.properties.lastname?.value,\n    FirstName: $('Filter').first().json.properties.firstname?.value,\n    Email: $('Filter').first().json['identity-profiles']?.[0]?.identities?.find(i => i.type === 'EMAIL')?.value\n  }\n}}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        208,
+        -336
+      ],
+      "id": "332d19c6-61f8-4c11-972d-0e95398345cb",
+      "name": "HTTP Request1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get many contacts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get many contacts": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  }
+}
