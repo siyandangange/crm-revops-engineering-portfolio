@@ -3,7 +3,7 @@
 **HubSpot Meetings → Google Calendar → n8n → Salesforce**
 
 **Project type:** CRM Integration & Revenue Operations Automation  
-**Status:** Functional MVP — successfully tested  
+**Status:**Status:** Functional MVP — implemented, tested, and documented 
 **Environment:** HubSpot Free, n8n (Docker), Salesforce Developer Edition
 
 ## 1. Business Case
@@ -295,6 +295,20 @@ The current MVP has several limitations:
 
 ## 11. Evidence & Supporting Files
 
-Sanitized workflow exports, code examples, and test screenshots will be added separately.
+The following project artifacts have been completed and published in this GitHub repository:
 
-All credentials, access tokens, private contact information, and account-specific identifiers must be removed before publication.
+- **Project documentation:** Documented the business problem, requirements, solution architecture, implementation, field mappings, testing, and technical challenges.
+- **Solution architecture:** Created a Mermaid flowchart illustrating the consultation booking process, HubSpot contact retrieval, Salesforce duplicate check, and conditional Lead creation.
+- **n8n workflow export:** Exported and uploaded the sanitized workflow as `hubspot-salesforce-lead-handoff-sanitized.json`.
+- **Integration testing:** Successfully tested Salesforce Lead creation and duplicate prevention, with the outcomes documented in Section 6.
+- **API integration:** Implemented authenticated HubSpot contact retrieval and Salesforce REST API GET and POST operations.
+
+### Security and Data Protection
+
+The published workflow was sanitized before upload. Credentials, access tokens, client secrets, and private contact information were excluded or removed from the shared artifact.
+
+### Project Status
+
+**Functional MVP — implemented, tested, documented, and published on GitHub.**
+
+The workflow currently uses a manual trigger and a test-specific contact filter. Automated booking detection, production-ready error handling, and broader duplicate management remain future enhancements.
