@@ -51,6 +51,20 @@ Design and test a CRM integration that reduces manual lead handoff, supports dat
 ## 2. Solution Architecture
 
 The solution combines consultation scheduling, CRM data retrieval, conditional logic, and Salesforce REST API operations.
+```mermaid
+flowchart TD
+    A["HubSpot consultation booking"]
+    B["HubSpot contact captured"]
+    C["n8n retrieves and filters contacts"]
+    D["Salesforce duplicate check"]
+    E{"Lead exists?"}
+    F["Skip creation"]
+    G["Create Salesforce Lead"]
+
+    A --> B --> C --> D --> E
+    E -->|Yes| F
+    E -->|No| G
+```
 
 **Booking and lead capture:**
 
