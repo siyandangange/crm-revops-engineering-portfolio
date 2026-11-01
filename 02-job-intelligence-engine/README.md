@@ -47,7 +47,28 @@ The solution uses Postman to execute external job API requests, JavaScript to pr
 
 ## 3. Technical Architecture
 
-External Job APIs → Postman → JSON Processing & JavaScript Scoring → Salesforce REST API → Custom Job Tracking Object
+```mermaid
+flowchart TD
+    A["External Job APIs"]
+    B["Postman: HTTP GET Requests"]
+    C["Receive JSON Responses"]
+    D["JavaScript: Extract and Normalize Job Data"]
+    E["Apply Job-Fit Scoring Logic"]
+    F["Prepare Structured Job Records"]
+    G["Salesforce REST API: OAuth 2.0 / PKCE"]
+    H["Bulk Import Scored Jobs"]
+    I["Salesforce Custom Job Tracking Object"]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+```
+
 
 ## 4. Technologies
 
