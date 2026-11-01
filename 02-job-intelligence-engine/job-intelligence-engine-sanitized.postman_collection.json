@@ -1,0 +1,1213 @@
+{
+  "info": {
+    "_postman_id": "d9fabb8f-f04e-4f40-a7a8-57f0c2d8f160",
+    "name": "Job Search Intelligence Engine",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "59253389",
+    "_collection_link": "https://go.postman.co/collection/59253389-d9fabb8f-f04e-4f40-a7a8-57f0c2d8f160?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Adzuna",
+      "item": [
+        {
+          "name": "Adzuna API",
+          "item": [
+            {
+              "name": "03 - Adzuna - Salesforce Jobs",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "\r\npm.test(\"Adzuna API returns HTTP 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains a jobs array\", function () {\r\n    const data = pm.response.json();\r\n    pm.expect(data.results).to.be.an(\"array\");\r\n});\r\n\r\npm.test(\"Returned jobs contain titles\", function () {\r\n    const data = pm.response.json();\r\n    pm.expect(data.results.length).to.be.above(0);\r\n\r\n    data.results.forEach(job => {\r\n        pm.expect(job.title).to.be.a(\"string\").and.not.empty;\r\n    });\r\n});\r\n\r\nconst data = pm.response.json();\r\nconst jobs = data.results || [];\r\n\r\nconsole.log(\"Total jobs reported:\", data.count);\r\nconsole.log(\"Jobs on this page:\", jobs.length);\r\n\r\njobs.forEach(job => {\r\n    console.log(\r\n        \"JOB:\", job.title,\r\n        \"| COMPANY:\", job.company?.display_name,\r\n        \"| LOCATION:\", job.location?.display_name\r\n    );\r\n});\r\n"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "https://api.adzuna.com/v1/api/jobs/de/search/1?app_id={{adzuna_app_id}}&app_key={{adzuna_app_key}}&what=Salesforce&where=Berlin&results_per_page=10",
+                  "protocol": "https",
+                  "host": [
+                    "api",
+                    "adzuna",
+                    "com"
+                  ],
+                  "path": [
+                    "v1",
+                    "api",
+                    "jobs",
+                    "de",
+                    "search",
+                    "1"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "{{adzuna_app_id}}"
+                    },
+                    {
+                      "key": "app_key",
+                      "value": "{{adzuna_app_key}}"
+                    },
+                    {
+                      "key": "what",
+                      "value": "Salesforce"
+                    },
+                    {
+                      "key": "where",
+                      "value": "Berlin"
+                    },
+                    {
+                      "key": "results_per_page",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "04 - Adzuna - Revenue Operations",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "\r\npm.test(\"Adzuna API returns HTTP 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains a jobs array\", function () {\r\n    const data = pm.response.json();\r\n    pm.expect(data.results).to.be.an(\"array\");\r\n});\r\n\r\npm.test(\"Returned jobs contain titles\", function () {\r\n    const data = pm.response.json();\r\n    pm.expect(data.results.length).to.be.above(0);\r\n\r\n    data.results.forEach(job => {\r\n        pm.expect(job.title).to.be.a(\"string\").and.not.empty;\r\n    });\r\n});\r\n\r\nconst data = pm.response.json();\r\nconst jobs = data.results || [];\r\n\r\nconsole.log(\"Total jobs reported:\", data.count);\r\nconsole.log(\"Jobs on this page:\", jobs.length);\r\n\r\njobs.forEach(job => {\r\n    console.log(\r\n        \"JOB:\", job.title,\r\n        \"| COMPANY:\", job.company?.display_name,\r\n        \"| LOCATION:\", job.location?.display_name\r\n    );\r\n});\r\n"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "https://api.adzuna.com/v1/api/jobs/de/search/1?app_id={{adzuna_app_id}}&app_key={{adzuna_app_key}}&what=Revenue Operations&where=Berlin&results_per_page=10",
+                  "protocol": "https",
+                  "host": [
+                    "api",
+                    "adzuna",
+                    "com"
+                  ],
+                  "path": [
+                    "v1",
+                    "api",
+                    "jobs",
+                    "de",
+                    "search",
+                    "1"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "{{adzuna_app_id}}"
+                    },
+                    {
+                      "key": "app_key",
+                      "value": "{{adzuna_app_key}}"
+                    },
+                    {
+                      "key": "what",
+                      "value": "Revenue Operations"
+                    },
+                    {
+                      "key": "where",
+                      "value": "Berlin"
+                    },
+                    {
+                      "key": "results_per_page",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "05 - Adzuna - GTM Engineer",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "\r\npm.test(\"Adzuna API returns HTTP 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains a jobs array\", function () {\r\n    const data = pm.response.json();\r\n    pm.expect(data.results).to.be.an(\"array\");\r\n});\r\n\r\npm.test(\"Returned jobs contain titles\", function () {\r\n    const data = pm.response.json();\r\n    pm.expect(data.results.length).to.be.above(0);\r\n\r\n    data.results.forEach(job => {\r\n        pm.expect(job.title).to.be.a(\"string\").and.not.empty;\r\n    });\r\n});\r\n\r\nconst data = pm.response.json();\r\nconst jobs = data.results || [];\r\n\r\nconsole.log(\"Total jobs reported:\", data.count);\r\nconsole.log(\"Jobs on this page:\", jobs.length);\r\n\r\njobs.forEach(job => {\r\n    console.log(\r\n        \"JOB:\", job.title,\r\n        \"| COMPANY:\", job.company?.display_name,\r\n        \"| LOCATION:\", job.location?.display_name\r\n    );\r\n});\r\n"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "https://api.adzuna.com/v1/api/jobs/de/search/1?app_id={{adzuna_app_id}}&app_key={{adzuna_app_key}}&what=GTM Engineer&where=Berlin&results_per_page=10",
+                  "protocol": "https",
+                  "host": [
+                    "api",
+                    "adzuna",
+                    "com"
+                  ],
+                  "path": [
+                    "v1",
+                    "api",
+                    "jobs",
+                    "de",
+                    "search",
+                    "1"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "{{adzuna_app_id}}"
+                    },
+                    {
+                      "key": "app_key",
+                      "value": "{{adzuna_app_key}}"
+                    },
+                    {
+                      "key": "what",
+                      "value": "GTM Engineer"
+                    },
+                    {
+                      "key": "where",
+                      "value": "Berlin"
+                    },
+                    {
+                      "key": "results_per_page",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "06 - Adzuna - CRM Manager",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "\r\npm.test(\"Adzuna API returns HTTP 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains a jobs array\", function () {\r\n    const data = pm.response.json();\r\n    pm.expect(data.results).to.be.an(\"array\");\r\n});\r\n\r\npm.test(\"Returned jobs contain titles\", function () {\r\n    const data = pm.response.json();\r\n    pm.expect(data.results.length).to.be.above(0);\r\n\r\n    data.results.forEach(job => {\r\n        pm.expect(job.title).to.be.a(\"string\").and.not.empty;\r\n    });\r\n});\r\n\r\nconst data = pm.response.json();\r\nconst jobs = data.results || [];\r\n\r\nconsole.log(\"Total jobs reported:\", data.count);\r\nconsole.log(\"Jobs on this page:\", jobs.length);\r\n\r\njobs.forEach(job => {\r\n    console.log(\r\n        \"JOB:\", job.title,\r\n        \"| COMPANY:\", job.company?.display_name,\r\n        \"| LOCATION:\", job.location?.display_name\r\n    );\r\n});\r\n"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "https://api.adzuna.com/v1/api/jobs/de/search/1?app_id={{adzuna_app_id}}&app_key={{adzuna_app_key}}&what=CRM Manager&where=Berlin&results_per_page=10",
+                  "protocol": "https",
+                  "host": [
+                    "api",
+                    "adzuna",
+                    "com"
+                  ],
+                  "path": [
+                    "v1",
+                    "api",
+                    "jobs",
+                    "de",
+                    "search",
+                    "1"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "{{adzuna_app_id}}"
+                    },
+                    {
+                      "key": "app_key",
+                      "value": "{{adzuna_app_key}}"
+                    },
+                    {
+                      "key": "what",
+                      "value": "CRM Manager"
+                    },
+                    {
+                      "key": "where",
+                      "value": "Berlin"
+                    },
+                    {
+                      "key": "results_per_page",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "07 - Adzuna - Operational Excellence",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "\r\npm.test(\"Adzuna API returns HTTP 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains a jobs array\", function () {\r\n    const data = pm.response.json();\r\n    pm.expect(data.results).to.be.an(\"array\");\r\n});\r\n\r\npm.test(\"Returned jobs contain titles\", function () {\r\n    const data = pm.response.json();\r\n    pm.expect(data.results.length).to.be.above(0);\r\n\r\n    data.results.forEach(job => {\r\n        pm.expect(job.title).to.be.a(\"string\").and.not.empty;\r\n    });\r\n});\r\n\r\nconst data = pm.response.json();\r\nconst jobs = data.results || [];\r\n\r\nconsole.log(\"Total jobs reported:\", data.count);\r\nconsole.log(\"Jobs on this page:\", jobs.length);\r\n\r\njobs.forEach(job => {\r\n    console.log(\r\n        \"JOB:\", job.title,\r\n        \"| COMPANY:\", job.company?.display_name,\r\n        \"| LOCATION:\", job.location?.display_name\r\n    );\r\n});\r\n"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "https://api.adzuna.com/v1/api/jobs/de/search/1?app_id={{adzuna_app_id}}&app_key={{adzuna_app_key}}&what=Operational Excellence&where=Berlin&results_per_page=10",
+                  "protocol": "https",
+                  "host": [
+                    "api",
+                    "adzuna",
+                    "com"
+                  ],
+                  "path": [
+                    "v1",
+                    "api",
+                    "jobs",
+                    "de",
+                    "search",
+                    "1"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "{{adzuna_app_id}}"
+                    },
+                    {
+                      "key": "app_key",
+                      "value": "{{adzuna_app_key}}"
+                    },
+                    {
+                      "key": "what",
+                      "value": "Operational Excellence"
+                    },
+                    {
+                      "key": "where",
+                      "value": "Berlin"
+                    },
+                    {
+                      "key": "results_per_page",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "08 - Adzuna - Business Process Management",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "\r\npm.test(\"Adzuna API returns HTTP 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains a jobs array\", function () {\r\n    const data = pm.response.json();\r\n    pm.expect(data.results).to.be.an(\"array\");\r\n});\r\n\r\npm.test(\"Returned jobs contain titles\", function () {\r\n    const data = pm.response.json();\r\n    pm.expect(data.results.length).to.be.above(0);\r\n\r\n    data.results.forEach(job => {\r\n        pm.expect(job.title).to.be.a(\"string\").and.not.empty;\r\n    });\r\n});\r\n\r\nconst data = pm.response.json();\r\nconst jobs = data.results || [];\r\n\r\nconsole.log(\"Total jobs reported:\", data.count);\r\nconsole.log(\"Jobs on this page:\", jobs.length);\r\n\r\njobs.forEach(job => {\r\n    console.log(\r\n        \"JOB:\", job.title,\r\n        \"| COMPANY:\", job.company?.display_name,\r\n        \"| LOCATION:\", job.location?.display_name\r\n    );\r\n});\r\n\r\n"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "https://api.adzuna.com/v1/api/jobs/de/search/1?app_id={{adzuna_app_id}}&app_key={{adzuna_app_key}}&what=Business Process Management&where=Berlin&results_per_page=10",
+                  "protocol": "https",
+                  "host": [
+                    "api",
+                    "adzuna",
+                    "com"
+                  ],
+                  "path": [
+                    "v1",
+                    "api",
+                    "jobs",
+                    "de",
+                    "search",
+                    "1"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "{{adzuna_app_id}}"
+                    },
+                    {
+                      "key": "app_key",
+                      "value": "{{adzuna_app_key}}"
+                    },
+                    {
+                      "key": "what",
+                      "value": "Business Process Management"
+                    },
+                    {
+                      "key": "where",
+                      "value": "Berlin"
+                    },
+                    {
+                      "key": "results_per_page",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r\nconst data = pm.response.json();\r\n\r\nconst category = pm.request.url.query.get(\"what\");\r\n\r\nconst standardizedJobs = (data.results || []).map(job => ({\r\n    job_id: job.id,\r\n    title: job.title,\r\n    company: job.company?.display_name || \"Unknown\",\r\n    location: job.location?.display_name || \"Unknown\",\r\n    url: job.redirect_url,\r\n    source: \"Adzuna\",\r\n    search_category: category,\r\n    description: job.description || \"\"\r\n}));\r\n\r\nconsole.log(\"Standardized jobs:\", standardizedJobs);\r\n\r\npm.environment.set(\r\n    \"latest_adzuna_jobs\",\r\n    JSON.stringify(standardizedJobs)\r\n);\r\n\r\n\r\nconst existingJobs = JSON.parse(\r\n    pm.environment.get(\"all_adzuna_jobs\") || \"[]\"\r\n);\r\n\r\nconst jobsById = new Map();\r\n\r\n[...existingJobs, ...standardizedJobs].forEach(job => {\r\n    const previous = jobsById.get(String(job.job_id));\r\n\r\n    const categories = [\r\n        ...(previous?.search_categories || \r\n            (previous?.search_category ? [previous.search_category] : [])),\r\n        ...(job.search_categories || \r\n            (job.search_category ? [job.search_category] : []))\r\n    ];\r\n\r\njobsById.set(String(job.job_id), {\r\n    ...(previous || {}),\r\n    ...job,\r\n    description: job.description || previous?.description || \"\",\r\n    search_categories: [...new Set(categories)]\r\n});\r\n});\r\nconst uniqueJobs = Array.from(jobsById.values());\r\n\r\npm.environment.set(\r\n    \"all_adzuna_jobs\",\r\n    JSON.stringify(uniqueJobs)\r\n);\r\n\r\nconsole.log(\"Total unique jobs stored:\", uniqueJobs.length);\r\n"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Salesforce API",
+      "item": [
+        {
+          "name": "09 - Salesforce - Test Connection",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r\nconst jobs = JSON.parse(\r\n  pm.environment.get(\"all_adzuna_jobs\") || \"[]\"\r\n);\r\n\r\nconsole.log(\"First Adzuna job:\", jobs[0]);\r\nconsole.log(\"Total jobs:\", jobs.length);\r\nconsole.log(\"Available fields:\", Object.keys(jobs[0]));\r\nconsole.log(\"Job description:\", jobs[0].description);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "addTokenTo",
+                  "value": "header",
+                  "type": "string"
+                },
+                {
+                  "key": "tokenName",
+                  "value": "Salesforce Developer Org",
+                  "type": "string"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "authorization_code_with_pkce",
+                  "type": "string"
+                },
+                {
+                  "key": "redirect_uri",
+                  "value": "https://oauth.pstmn.io/v1/callback",
+                  "type": "string"
+                },
+                {
+                  "key": "authUrl",
+                  "value": "https://login.salesforce.com/services/oauth2/authorize",
+                  "type": "string"
+                },
+                {
+                  "key": "accessTokenUrl",
+                  "value": "{{REPLACE_WITH_YOUR_OWN_CREDENTIAL}}",
+                  "type": "string"
+                },
+                {
+                  "key": "clientId",
+                  "value": "{{REPLACE_WITH_YOUR_OWN_CREDENTIAL}}",
+                  "type": "string"
+                },
+                {
+                  "key": "scope",
+                  "value": "api",
+                  "type": "string"
+                },
+                {
+                  "key": "client_authentication",
+                  "value": "body",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://resourceful-koala-p3k8kn-dev-ed.trailblaze.my.salesforce.com/services/data/v60.0/",
+              "protocol": "https",
+              "host": [
+                "resourceful-koala-p3k8kn-dev-ed",
+                "trailblaze",
+                "my",
+                "salesforce",
+                "com"
+              ],
+              "path": [
+                "services",
+                "data",
+                "v60.0",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "10 - Salesforce - Create Job Opportunity",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r\nconst jobs = JSON.parse(\r\n  pm.environment.get(\"all_adzuna_jobs\") || \"[]\"\r\n);\r\n\r\nif (jobs.length === 0) {\r\n  throw new Error(\"No Adzuna jobs found\");\r\n}\r\n\r\n// STEP 1: Select the first Adzuna job\r\nconst job = jobs[0];\r\n\r\nif (!job.job_id) {\r\n  throw new Error(\"Job has no external ID\");\r\n}\r\n\r\nconst title = String(job.title || \"\").toLowerCase();\r\nconst description = String(job.description || \"\").toLowerCase();\r\nconst location = String(job.location || \"\").toLowerCase();\r\n\r\nconst jobText = title + \" \" + description;\r\n\r\n// STEP 2: Define matching keywords\r\nconst processSkills = [\r\n  \"process management\",\r\n  \"business process\",\r\n  \"process improvement\",\r\n  \"prozessoptimierung\",\r\n  \"geschäftsprozessmanagement\",\r\n  \"operational excellence\",\r\n  \"continuous improvement\",\r\n  \"wertstromanalyse\",\r\n  \"kostensenkung\"\r\n];\r\n\r\nconst crmSkills = [\r\n  \"salesforce\",\r\n  \"crm\",\r\n  \"revenue operations\",\r\n  \"sales operations\",\r\n  \"sales automation\",\r\n  \"marketing automation\",\r\n  \"hubspot\"\r\n];\r\n\r\nconst preferredLocations = [\r\n  \"berlin\",\r\n  \"hamburg\"\r\n];\r\n\r\nconst remoteKeywords = [\r\n  \"remote\",\r\n  \"homeoffice\",\r\n  \"home office\",\r\n  \"fully remote\"\r\n];\r\n\r\nconst employmentKeywords = [\r\n  \"full-time\",\r\n  \"full time\",\r\n  \"vollzeit\",\r\n  \"permanent\",\r\n  \"unbefristet\",\r\n  \"festanstellung\"\r\n];\r\n\r\nconst impactKeywords = [\r\n  \"nonprofit\",\r\n  \"non-profit\",\r\n  \"ngo\",\r\n  \"sustainability\",\r\n  \"nachhaltigkeit\",\r\n  \"social impact\",\r\n  \"humanitarian\",\r\n  \"gemeinnützig\"\r\n];\r\n\r\n// STEP 3: Check matches\r\nconst processMatch = processSkills.some(\r\n  keyword => jobText.includes(keyword)\r\n);\r\n\r\nconst crmMatch = crmSkills.some(\r\n  keyword => jobText.includes(keyword)\r\n);\r\n\r\nconst locationMatch =\r\n  preferredLocations.some(\r\n    keyword => location.includes(keyword)\r\n  ) ||\r\n  remoteKeywords.some(\r\n    keyword => jobText.includes(keyword)\r\n  );\r\n\r\nconst employmentMatch = employmentKeywords.some(\r\n  keyword => description.includes(keyword)\r\n);\r\n\r\nconst impactMatch = impactKeywords.some(\r\n  keyword => jobText.includes(keyword)\r\n);\r\n\r\n// STEP 4: Calculate Fit Score\r\nconst skillScore =\r\n  (processMatch ? 30 : 0) +\r\n  (crmMatch ? 30 : 0);\r\n\r\nconst locationScore = locationMatch ? 20 : 0;\r\nconst employmentScore = employmentMatch ? 10 : 0;\r\nconst impactScore = impactMatch ? 10 : 0;\r\n\r\nconst fitScore =\r\n  skillScore +\r\n  locationScore +\r\n  employmentScore +\r\n  impactScore;\r\n\r\n// STEP 5: Set External Job ID\r\npm.environment.set(\r\n  \"adzuna_job_id\",\r\n  String(job.job_id)\r\n);\r\n\r\n// STEP 6: Map Adzuna data to Salesforce\r\nconst salesforceJob = {\r\n  Name: String(job.title || \"Untitled Job\").slice(0, 80),\r\n  Company__c: String(job.company || \"Unknown\").slice(0, 255),\r\n  Location__c: String(job.location || \"Unknown\").slice(0, 255),\r\n  Job_URL__c: job.url || null,\r\n  Source__c: \"Adzuna\",\r\n  Fit_Score__c: fitScore\r\n};\r\n\r\n// STEP 7: Save JSON payload\r\npm.environment.set(\r\n  \"salesforce_job_payload\",\r\n  JSON.stringify(salesforceJob)\r\n);\r\n\r\n// STEP 8: Log results\r\nconsole.log(\"Job:\", job.title);\r\nconsole.log(\"External Job ID:\", job.job_id);\r\nconsole.log(\"Process skills:\", processMatch);\r\nconsole.log(\"CRM skills:\", crmMatch);\r\nconsole.log(\"Location match:\", locationMatch);\r\nconsole.log(\"Employment match:\", employmentMatch);\r\nconsole.log(\"Impact match:\", impactMatch);\r\n\r\nconsole.log(\"Skill score:\", skillScore, \"/60\");\r\nconsole.log(\"Location score:\", locationScore, \"/20\");\r\nconsole.log(\"Employment score:\", employmentScore, \"/10\");\r\nconsole.log(\"Impact score:\", impactScore, \"/10\");\r\n\r\nconsole.log(\"FINAL FIT SCORE:\", fitScore, \"/100\");\r\nconsole.log(\"Salesforce payload:\", salesforceJob);\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "addTokenTo",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{{salesforce_job_payload}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://resourceful-koala-p3k8kn-dev-ed.trailblaze.my.salesforce.com/services/data/v60.0/sobjects/Job_Opportunity__c/External_Job_ID__c/{{adzuna_job_id}}",
+              "protocol": "https",
+              "host": [
+                "resourceful-koala-p3k8kn-dev-ed",
+                "trailblaze",
+                "my",
+                "salesforce",
+                "com"
+              ],
+              "path": [
+                "services",
+                "data",
+                "v60.0",
+                "sobjects",
+                "Job_Opportunity__c",
+                "External_Job_ID__c",
+                "{{adzuna_job_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "11 - Salesforce - Retrieve Job Opportunity",
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "addTokenTo",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://resourceful-koala-p3k8kn-dev-ed.trailblaze.my.salesforce.com/services/data/v60.0/sobjects/Job_Opportunity__c/External_Job_ID__c/TEST-001",
+              "protocol": "https",
+              "host": [
+                "resourceful-koala-p3k8kn-dev-ed",
+                "trailblaze",
+                "my",
+                "salesforce",
+                "com"
+              ],
+              "path": [
+                "services",
+                "data",
+                "v60.0",
+                "sobjects",
+                "Job_Opportunity__c",
+                "External_Job_ID__c",
+                "TEST-001"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "12 - Salesforce - Update Job Opportunity",
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "addTokenTo",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "\r\n{\r\n  \"Application_Status__c\": \"Interested\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://resourceful-koala-p3k8kn-dev-ed.trailblaze.my.salesforce.com/services/data/v60.0/sobjects/Job_Opportunity__c/External_Job_ID__c/TEST-001",
+              "protocol": "https",
+              "host": [
+                "resourceful-koala-p3k8kn-dev-ed",
+                "trailblaze",
+                "my",
+                "salesforce",
+                "com"
+              ],
+              "path": [
+                "services",
+                "data",
+                "v60.0",
+                "sobjects",
+                "Job_Opportunity__c",
+                "External_Job_ID__c",
+                "TEST-001"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "13 - Inspect Adzuna Job Data",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r\nconst jobs = JSON.parse(\r\n  pm.environment.get(\"all_adzuna_jobs\") || \"[]\"\r\n);\r\n\r\nif (!jobs.length) {\r\n  throw new Error(\"No Adzuna jobs found\");\r\n}\r\n\r\n// STEP 1: Define two career paths\r\nconst careerPaths = {\r\n  crm: {\r\n    titles: [\r\n      \"salesforce administrator\",\r\n      \"salesforce admin\",\r\n      \"salesforce consultant\",\r\n      \"salesforce product owner\",\r\n      \"salesforce solution architect\",\r\n      \"crm manager\",\r\n      \"crm product owner\",\r\n      \"technical crm\",\r\n      \"revenue operations\",\r\n      \"revops\",\r\n      \"sales operations\",\r\n      \"gtm engineer\",\r\n      \"sales automation\",\r\n      \"marketing automation\",\r\n      \"application manager crm\"\r\n    ],\r\n    skills: [\r\n      \"salesforce\",\r\n      \"crm\",\r\n      \"hubspot\",\r\n      \"revenue operations\",\r\n      \"sales operations\",\r\n      \"sales automation\",\r\n      \"marketing automation\",\r\n      \"business analysis\",\r\n      \"workflow automation\",\r\n      \"data quality\",\r\n      \"process mapping\",\r\n      \"clay\",\r\n      \"braze\",\r\n      \"n8n\"\r\n    ]\r\n  },\r\n\r\n  process: {\r\n    titles: [\r\n      \"operational excellence\",\r\n      \"business improvement\",\r\n      \"process improvement\",\r\n      \"business process\",\r\n      \"process manager\",\r\n      \"process owner\",\r\n      \"business transformation\",\r\n      \"continuous improvement\",\r\n      \"value chain\",\r\n      \"value stream\",\r\n      \"prozessoptimierung\",\r\n      \"geschäftsprozessmanagement\",\r\n      \"projektmanager prozess\"\r\n    ],\r\n    skills: [\r\n      \"process improvement\",\r\n      \"business process\",\r\n      \"operational excellence\",\r\n      \"continuous improvement\",\r\n      \"value chain\",\r\n      \"value stream\",\r\n      \"process mapping\",\r\n      \"cost reduction\",\r\n      \"cost saving\",\r\n      \"lean\",\r\n      \"six sigma\",\r\n      \"prozessoptimierung\",\r\n      \"wertstromanalyse\",\r\n      \"kostensenkung\",\r\n      \"business transformation\"\r\n    ]\r\n  }\r\n};\r\n\r\n// STEP 2: Define preferences\r\nconst remoteKeywords = [\r\n  \"remote\",\r\n  \"homeoffice\",\r\n  \"home office\",\r\n  \"work from home\",\r\n  \"mobiles arbeiten\"\r\n];\r\n\r\nconst employmentKeywords = [\r\n  \"permanent\",\r\n  \"unbefristet\",\r\n  \"festanstellung\",\r\n  \"full-time\",\r\n  \"full time\",\r\n  \"vollzeit\"\r\n];\r\n\r\nconst impactKeywords = [\r\n  \"nonprofit\",\r\n  \"non-profit\",\r\n  \"ngo\",\r\n  \"gemeinnützig\",\r\n  \"sustainability\",\r\n  \"nachhaltigkeit\",\r\n  \"humanitarian\",\r\n  \"social impact\",\r\n  \"social enterprise\"\r\n];\r\n\r\n// STEP 3: Helper function\r\nfunction countMatches(text, keywords) {\r\n  return keywords.filter(\r\n    keyword => text.includes(keyword)\r\n  ).length;\r\n}\r\n\r\n// STEP 4: Calculate Fit Score\r\nfunction calculateFit(job) {\r\n  const title = String(\r\n    job.title || \"\"\r\n  ).toLowerCase();\r\n\r\n  const description = String(\r\n    job.description || \"\"\r\n  ).toLowerCase();\r\n\r\n  const location = String(\r\n    job.location || \"\"\r\n  ).toLowerCase();\r\n\r\n  const combined = title + \" \" + description;\r\n\r\n  // Evaluate both career paths independently\r\n  const pathScores = Object.entries(\r\n    careerPaths\r\n  ).map(([path, keywords]) => {\r\n\r\n    const titleMatches = countMatches(\r\n      title,\r\n      keywords.titles\r\n    );\r\n\r\n    const skillMatches = countMatches(\r\n      combined,\r\n      keywords.skills\r\n    );\r\n\r\n    const titleScore = Math.min(\r\n      titleMatches * 15,\r\n      30\r\n    );\r\n\r\n    const skillScore = Math.min(\r\n      skillMatches * 10,\r\n      30\r\n    );\r\n\r\n    return {\r\n      path: path,\r\n      titleScore: titleScore,\r\n      skillScore: skillScore,\r\n      careerScore: titleScore + skillScore\r\n    };\r\n  });\r\n\r\n  // Select the best career path\r\n  pathScores.sort(\r\n    (a, b) => b.careerScore - a.careerScore\r\n  );\r\n\r\n  const bestPath = pathScores[0];\r\n\r\n  // STEP 5: Location score (20)\r\n  const preferredCity =\r\n    location.includes(\"berlin\") ||\r\n    location.includes(\"hamburg\");\r\n\r\n  const remoteMatch = remoteKeywords.some(\r\n    keyword => combined.includes(keyword)\r\n  );\r\n\r\n  const locationScore =\r\n    preferredCity || remoteMatch ? 20 : 0;\r\n\r\n  // STEP 6: Employment score (10)\r\n  const employmentMatch =\r\n    employmentKeywords.some(\r\n      keyword => description.includes(keyword)\r\n    );\r\n\r\n  const employmentScore =\r\n    employmentMatch ? 10 : 0;\r\n\r\n  // STEP 7: Impact score (10)\r\n  const impactMatch =\r\n    impactKeywords.some(\r\n      keyword => combined.includes(keyword)\r\n    );\r\n\r\n  const impactScore =\r\n    impactMatch ? 10 : 0;\r\n\r\n  // STEP 8: Final score\r\n  const fitScore =\r\n    bestPath.careerScore +\r\n    locationScore +\r\n    employmentScore +\r\n    impactScore;\r\n\r\n  return {\r\n    ...job,\r\n    fit_score: fitScore,\r\n    career_path: bestPath.path,\r\n    score_breakdown: {\r\n      title: bestPath.titleScore,\r\n      skills: bestPath.skillScore,\r\n      location: locationScore,\r\n      employment: employmentScore,\r\n      impact: impactScore\r\n    }\r\n  };\r\n}\r\n\r\n// STEP 9: Score all Adzuna jobs\r\nconst scoredJobs = jobs.map(\r\n  job => calculateFit(job)\r\n);\r\n\r\n// STEP 10: Sort by highest Fit Score\r\nscoredJobs.sort(\r\n  (a, b) => b.fit_score - a.fit_score\r\n);\r\n\r\n// STEP 11: Save results to Postman\r\npm.environment.set(\r\n  \"scored_adzuna_jobs\",\r\n  JSON.stringify(scoredJobs)\r\n);\r\n\r\n// Reset import index\r\npm.environment.set(\r\n  \"job_import_index\",\r\n  \"0\"\r\n);\r\n\r\n// STEP 12: Display results\r\nconsole.log(\r\n  \"Ranked jobs:\",\r\n  scoredJobs.map(job => ({\r\n    title: job.title,\r\n    company: job.company,\r\n    location: job.location,\r\n    career_path: job.career_path,\r\n    fit_score: job.fit_score\r\n  }))\r\n);\r\n\r\nconsole.log(\r\n  \"Total jobs scored:\",\r\n  scoredJobs.length\r\n);\r\n\r\nconsole.log(\r\n  \"Highest Fit Score:\",\r\n  scoredJobs[0]?.fit_score\r\n);\r\n\r\nconsole.log(\r\n  \"Scored jobs saved successfully!\"\r\n);\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://postman-echo.com/get",
+              "protocol": "https",
+              "host": [
+                "postman-echo",
+                "com"
+              ],
+              "path": [
+                "get"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "14 - Salesforce - Bulk Import Scored Jobs",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r\nconst jobs = JSON.parse(\r\n  pm.environment.get(\"scored_adzuna_jobs\") || \"[]\"\r\n);\r\n\r\nconst index = Number(\r\n  pm.environment.get(\"job_import_index\") || \"0\"\r\n);\r\n\r\nif (jobs.length === 0) {\r\n  throw new Error(\"No scored jobs found. Run request 13 first.\");\r\n}\r\n\r\nif (index >= jobs.length) {\r\n  throw new Error(\"All jobs have been processed.\");\r\n}\r\n\r\nconst job = jobs[index];\r\n\r\nif (!job.job_id) {\r\n  throw new Error(\"Missing External Job ID at index \" + index);\r\n}\r\n\r\n// Set the external ID for Salesforce upsert\r\npm.environment.set(\r\n  \"adzuna_job_id\",\r\n  String(job.job_id)\r\n);\r\n\r\n// Build Salesforce payload\r\nconst payload = {\r\n  Name: String(job.title || \"Untitled Job\").slice(0, 80),\r\n  Company__c: String(job.company || \"Unknown\").slice(0, 255),\r\n  Location__c: String(job.location || \"Unknown\").slice(0, 255),\r\n  Job_URL__c: job.url || null,\r\n  Source__c: \"Adzuna\",\r\n  Fit_Score__c: job.fit_score\r\n};\r\n\r\n// Preserve existing Application Status\r\npm.environment.set(\r\n  \"salesforce_job_payload\",\r\n  JSON.stringify(payload)\r\n);\r\n\r\nconsole.log(\"Importing job:\", index + 1, \"of\", jobs.length);\r\nconsole.log(\"Job:\", job.title);\r\nconsole.log(\"Fit Score:\", job.fit_score);\r\n"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r\nconst jobs = JSON.parse(\r\n  pm.environment.get(\"scored_adzuna_jobs\") || \"[]\"\r\n);\r\n\r\nconst index = Number(\r\n  pm.environment.get(\"job_import_index\") || \"0\"\r\n);\r\n\r\nconst success = [200, 201, 204].includes(\r\n  pm.response.code\r\n);\r\n\r\nif (success) {\r\n  console.log(\r\n    \"SUCCESS: Imported job\",\r\n    index + 1,\r\n    \"of\",\r\n    jobs.length\r\n  );\r\n\r\n  pm.environment.set(\r\n    \"job_import_index\",\r\n    String(index + 1)\r\n  );\r\n} else {\r\n  console.error(\r\n    \"IMPORT FAILED at job\",\r\n    index + 1\r\n  );\r\n\r\n  console.error(\r\n    \"Salesforce response:\",\r\n    pm.response.text()\r\n  );\r\n\r\n  pm.execution.setNextRequest(null);\r\n}\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "addTokenTo",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{{salesforce_job_payload}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://resourceful-koala-p3k8kn-dev-ed.trailblaze.my.salesforce.com/services/data/v60.0/sobjects/Job_Opportunity__c/External_Job_ID__c/{{adzuna_job_id}}",
+              "protocol": "https",
+              "host": [
+                "resourceful-koala-p3k8kn-dev-ed",
+                "trailblaze",
+                "my",
+                "salesforce",
+                "com"
+              ],
+              "path": [
+                "services",
+                "data",
+                "v60.0",
+                "sobjects",
+                "Job_Opportunity__c",
+                "External_Job_ID__c",
+                "{{adzuna_job_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "24 - Salesforce - Bulk Import RevOps Careers Jobs",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r\n/*\r\nREQUEST 24 - BEFORE REQUEST\r\nSelect one RevOps job for Salesforce upsert.\r\n*/\r\n\r\nconst raw = pm.environment.get(\"revops_final_import_jobs\");\r\n\r\nif (!raw) {\r\n    throw new Error(\"Missing revops_final_import_jobs\");\r\n}\r\n\r\nconst jobs = JSON.parse(raw);\r\n\r\nif (!Array.isArray(jobs) || jobs.length === 0) {\r\n    throw new Error(\"No jobs prepared for import\");\r\n}\r\n\r\nconst index = Number(\r\n    pm.environment.get(\"revops_import_index\") || 0\r\n);\r\n\r\nif (!Number.isInteger(index) ||\r\n    index < 0 ||\r\n    index >= jobs.length) {\r\n    throw new Error(\r\n        \"Invalid import index: \" + index +\r\n        \". Expected 0 to \" + (jobs.length - 1)\r\n    );\r\n}\r\n\r\nconst job = jobs[index];\r\n\r\nif (!job.external_id || !job.payload) {\r\n    throw new Error(\r\n        \"Missing external ID or payload at index \" + index\r\n    );\r\n}\r\n\r\n// Preserve prepared payload without changing application status.\r\nconst payload = { ...job.payload };\r\ndelete payload.Application_Status__c;\r\n\r\n// Validate required fields.\r\nif (!payload.Name ||\r\n    !payload.Company__c ||\r\n    !payload.Job_URL__c) {\r\n    throw new Error(\r\n        \"Missing required job fields at index \" + index\r\n    );\r\n}\r\n\r\nif (payload.Name.length > 80) {\r\n    throw new Error(\"Job title exceeds 80 characters\");\r\n}\r\n\r\npm.variables.set(\"revops_job_id\", job.external_id);\r\n\r\npm.variables.set(\r\n    \"revops_salesforce_payload\",\r\n    JSON.stringify(payload)\r\n);\r\n\r\npm.variables.set(\r\n    \"revops_current_import_index\",\r\n    String(index)\r\n);\r\n\r\nconsole.log(\r\n    \"IMPORTING:\",\r\n    index + 1,\r\n    \"/\",\r\n    jobs.length,\r\n    payload.Name\r\n);\r\n\r\nconsole.log(\"Company:\", payload.Company__c);\r\nconsole.log(\"External ID:\", job.external_id);\r\n"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r\n/*\r\nREQUEST 24 - AFTER RESPONSE\r\n\r\nAdvance only after a successful Salesforce upsert.\r\nSuccessful responses: 200, 201 or 204.\r\n*/\r\n\r\nconst status = pm.response.code;\r\n\r\nconst index = Number(\r\n    pm.variables.get(\"revops_current_import_index\")\r\n);\r\n\r\nconst jobs = JSON.parse(\r\n    pm.environment.get(\"revops_final_import_jobs\")\r\n);\r\n\r\nconst success = [200, 201, 204].includes(status);\r\n\r\npm.test(\"Salesforce upsert successful\", function () {\r\n    pm.expect(\r\n        status,\r\n        pm.response.text()\r\n    ).to.be.oneOf([200, 201, 204]);\r\n});\r\n\r\nif (success) {\r\n    const nextIndex = index + 1;\r\n\r\n    pm.environment.set(\r\n        \"revops_import_index\",\r\n        String(nextIndex)\r\n    );\r\n\r\n    console.log(\r\n        \"SUCCESS:\",\r\n        nextIndex,\r\n        \"/\",\r\n        jobs.length,\r\n        \"HTTP\",\r\n        status\r\n    );\r\n\r\n    if (nextIndex === jobs.length) {\r\n        console.log(\"ALL REVOPS JOBS IMPORTED\");\r\n    }\r\n\r\n} else {\r\n    console.error(\r\n        \"SALESFORCE IMPORT FAILED\"\r\n    );\r\n\r\n    console.error(\"HTTP status:\", status);\r\n    console.error(\r\n        \"Response:\",\r\n        pm.response.text()\r\n    );\r\n\r\n    console.error(\r\n        \"Failed job index:\",\r\n        index\r\n    );\r\n\r\n    console.error(\r\n        \"Import stopped. Index not advanced.\"\r\n    );\r\n\r\n    pm.execution.setNextRequest(null);\r\n}\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "addTokenTo",
+                  "value": "header",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{{revops_salesforce_payload}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://resourceful-koala-p3k8kn-dev-ed.trailblaze.my.salesforce.com/services/data/v60.0/sobjects/Job_Opportunity__c/External_Job_ID__c/{{revops_job_id}}",
+              "protocol": "https",
+              "host": [
+                "resourceful-koala-p3k8kn-dev-ed",
+                "trailblaze",
+                "my",
+                "salesforce",
+                "com"
+              ],
+              "path": [
+                "services",
+                "data",
+                "v60.0",
+                "sobjects",
+                "Job_Opportunity__c",
+                "External_Job_ID__c",
+                "{{revops_job_id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "RevOps Careers",
+      "item": [
+        {
+          "name": "15 - RevOps Careers - Test Job Feed",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r\n/*\r\nREVOPS CAREERS - GERMANY JOB FILTER\r\nRequest 15 - After response\r\n\r\nReads RSS XML, converts to JSON,\r\nfilters Germany-relevant vacancies,\r\nand saves results in Postman.\r\n*/\r\n\r\nconst xml2js = require(\"xml2js\");\r\n\r\npm.test(\"HTTP 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\nconst xml = pm.response.text();\r\n\r\npm.test(\"Valid RSS response\", function () {\r\n    pm.expect(xml).to.include(\"<rss\");\r\n});\r\n\r\n// Convert XML into a JavaScript object\r\nconst parser = new xml2js.Parser({\r\n    explicitArray: false,\r\n    trim: true\r\n});\r\n\r\nparser.parseString(xml, function (error, parsed) {\r\n\r\n    if (error) {\r\n        console.error(\"XML parsing failed:\", error);\r\n        pm.test(\"XML parsing succeeded\", function () {\r\n            throw error;\r\n        });\r\n        return;\r\n    }\r\n\r\n    const channel = parsed.rss.channel;\r\n    const rawItems = channel.item || [];\r\n\r\n    const jobs = Array.isArray(rawItems)\r\n        ? rawItems\r\n        : [rawItems];\r\n\r\n    // Extract text safely\r\n    function getText(value) {\r\n        if (typeof value === \"string\") {\r\n            return value.trim();\r\n        }\r\n\r\n        if (typeof value === \"number\") {\r\n            return String(value);\r\n        }\r\n\r\n        if (value && typeof value === \"object\") {\r\n            return String(value._ || \"\").trim();\r\n        }\r\n\r\n        return \"\";\r\n    }\r\n\r\n    // Convert jobs to standard JSON records\r\n    const allJobs = jobs.map(job => ({\r\n        id: getText(job.guid) || getText(job.link),\r\n        title: getText(job.title),\r\n        company: getText(job[\"job_listing:company\"]),\r\n        location: getText(job[\"job_listing:location\"]),\r\n        job_type: getText(job[\"job_listing:job_type\"]),\r\n        category: getText(job[\"job_listing:job_category\"]),\r\n        description: getText(job.description),\r\n        url: getText(job.link),\r\n        published: getText(job.pubDate),\r\n        source: \"RevOps Careers\"\r\n    }));\r\n\r\n    // Identify Germany-relevant jobs\r\n    function classifyLocation(job) {\r\n        const location = job.location.toLowerCase();\r\n        const type = job.job_type.toLowerCase();\r\n\r\n        const germany =\r\n            /\\b(germany|deutschland|berlin|hamburg|munich|münchen|frankfurt|cologne|köln|düsseldorf|stuttgart|leipzig|bonn|hannover)\\b/i;\r\n\r\n        const europe =\r\n            /\\b(europe|emea|european union|eu-wide)\\b/i;\r\n\r\n        const remote = type.includes(\"remote\") ||\r\n            /\\bremote\\b/i.test(location);\r\n\r\n        if (germany.test(location)) {\r\n            return {\r\n                match: true,\r\n                reason: \"Germany location\"\r\n            };\r\n        }\r\n\r\n        if (remote && europe.test(location)) {\r\n            return {\r\n                match: true,\r\n                reason: \"Remote Europe/EMEA - verify eligibility\"\r\n            };\r\n        }\r\n\r\n        return {\r\n            match: false,\r\n            reason: \"Outside target geography\"\r\n        };\r\n    }\r\n\r\n    const filteredJobs = allJobs\r\n        .map(job => {\r\n            const result = classifyLocation(job);\r\n\r\n            return {\r\n                ...job,\r\n                location_match: result.reason,\r\n                is_relevant_location: result.match\r\n            };\r\n        })\r\n        .filter(job => job.is_relevant_location);\r\n\r\n    // Save results in Postman environment\r\n    pm.environment.set(\r\n        \"revops_all_jobs\",\r\n        JSON.stringify(allJobs)\r\n    );\r\n\r\n    pm.environment.set(\r\n        \"revops_filtered_jobs\",\r\n        JSON.stringify(filteredJobs)\r\n    );\r\n\r\n    pm.environment.set(\r\n        \"revops_job_count\",\r\n        String(filteredJobs.length)\r\n    );\r\n\r\n    // Tests\r\n    pm.test(\"XML converted successfully\", function () {\r\n        pm.expect(allJobs.length).to.be.above(0);\r\n    });\r\n\r\n    pm.test(\"Job titles extracted\", function () {\r\n        pm.expect(\r\n            allJobs.every(job => job.title.length > 0)\r\n        ).to.be.true;\r\n    });\r\n\r\n    pm.test(\"Germany filtering completed\", function () {\r\n        pm.expect(filteredJobs.length)\r\n            .to.be.at.most(allJobs.length);\r\n    });\r\n\r\n    // Display results without console.table\r\n    console.log(\"================================\");\r\n    console.log(\"REVOPS CAREERS - TEST RESULTS\");\r\n    console.log(\"================================\");\r\n\r\n    console.log(\"Total jobs:\", allJobs.length);\r\n    console.log(\"Germany matches:\", filteredJobs.length);\r\n    console.log(\r\n        \"Excluded jobs:\",\r\n        allJobs.length - filteredJobs.length\r\n    );\r\n\r\n    console.log(\"ALL JOBS:\");\r\n\r\n    allJobs.forEach((job, index) => {\r\n        console.log(\r\n            (index + 1) + \". \" +\r\n            job.title + \" | \" +\r\n            job.company + \" | \" +\r\n            job.location + \" | \" +\r\n            job.job_type\r\n        );\r\n    });\r\n\r\n    console.log(\"GERMANY FILTERED JOBS:\");\r\n\r\n    if (filteredJobs.length === 0) {\r\n        console.log(\"No Germany matches in this feed.\");\r\n    } else {\r\n        filteredJobs.forEach((job, index) => {\r\n            console.log(\r\n                (index + 1) + \". \" +\r\n                job.title + \" | \" +\r\n                job.company + \" | \" +\r\n                job.location + \" | \" +\r\n                job.location_match\r\n            );\r\n        });\r\n    }\r\n\r\n    console.log(\"Environment variables saved:\");\r\n    console.log(\"revops_all_jobs\");\r\n    console.log(\"revops_filtered_jobs\");\r\n    console.log(\"revops_job_count\");\r\n\r\n    console.log(\"TEST COMPLETE\");\r\n});\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://revopscareers.com/?feed=job_feed",
+              "protocol": "https",
+              "host": [
+                "revopscareers",
+                "com"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "feed",
+                  "value": "job_feed"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "16 - RevOps Careers - Berlin",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r\nconst xml2js = require(\"xml2js\");\r\n\r\nconst parser = new xml2js.Parser({\r\n    explicitArray: false,\r\n    trim: true\r\n});\r\n\r\nconst xml = pm.response.text();\r\nconst requestName = pm.info.requestName;\r\n\r\npm.test(\"HTTP 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"RSS XML returned\", function () {\r\n    pm.expect(xml).to.include(\"<rss\");\r\n});\r\n\r\nfunction text(value) {\r\n    if (typeof value === \"string\") return value.trim();\r\n    if (typeof value === \"number\") return String(value);\r\n    if (value && typeof value === \"object\") {\r\n        return String(value._ || \"\").trim();\r\n    }\r\n    return \"\";\r\n}\r\n\r\nparser.parseString(xml, function (err, data) {\r\n    if (err || !data || !data.rss) {\r\n        console.error(\"RSS parsing failed:\", err);\r\n        pm.test(\"RSS parsed\", function () {\r\n            pm.expect.fail(\"Invalid RSS XML\");\r\n        });\r\n        return;\r\n    }\r\n\r\n    const channel = data.rss.channel || {};\r\n    const raw = channel.item || [];\r\n    const items = Array.isArray(raw) ? raw : [raw];\r\n\r\n    const allJobs = items.map(job => ({\r\n        id: text(job.guid) || text(job.link),\r\n        title: text(job.title),\r\n        company: text(job[\"job_listing:company\"]),\r\n        location: text(job[\"job_listing:location\"]),\r\n        job_type: text(job[\"job_listing:job_type\"]),\r\n        category: text(job[\"job_listing:job_category\"]),\r\n        description: text(job.description),\r\n        url: text(job.link),\r\n        published: text(job.pubDate),\r\n        source: \"RevOps Careers\"\r\n    }));\r\n\r\n    // Germany-wide, including Berlin and Hamburg\r\n    const germanLocation =\r\n        /\\b(germany|deutschland|berlin|hamburg|munich|münchen|frankfurt|cologne|köln|düsseldorf|stuttgart|leipzig|bonn|hannover)\\b/i;\r\n\r\n    const europeLocation =\r\n        /\\b(europe|emea|european union|eu-wide)\\b/i;\r\n\r\n    function classify(job) {\r\n        const location = job.location;\r\n        const remote = /remote/i.test(job.job_type) ||\r\n                       /remote/i.test(location);\r\n\r\n        if (germanLocation.test(location)) {\r\n            return \"Germany location\";\r\n        }\r\n\r\n        if (remote && europeLocation.test(location)) {\r\n            return \"Remote Europe/EMEA - verify eligibility\";\r\n        }\r\n\r\n        return \"\";\r\n    }\r\n\r\n    const matching = allJobs\r\n        .map(job => ({\r\n            ...job,\r\n            location_match: classify(job)\r\n        }))\r\n        .filter(job => job.location_match !== \"\");\r\n\r\n    // Merge with existing RevOps jobs\r\n    let existing = [];\r\n\r\n    try {\r\n        existing = JSON.parse(\r\n            pm.environment.get(\"revops_germany_jobs\") || \"[]\"\r\n        );\r\n    } catch (e) {\r\n        existing = [];\r\n    }\r\n\r\n    const unique = new Map();\r\n\r\n    [...existing, ...matching].forEach(job => {\r\n        if (job.id) {\r\n            unique.set(job.id, job);\r\n        }\r\n    });\r\n\r\n    const combined = Array.from(unique.values());\r\n\r\n    pm.environment.set(\r\n        \"revops_germany_jobs\",\r\n        JSON.stringify(combined)\r\n    );\r\n\r\n    pm.environment.set(\r\n        \"revops_germany_count\",\r\n        String(combined.length)\r\n    );\r\n\r\n    console.log(\"================================\");\r\n    console.log(\"REQUEST:\", requestName);\r\n    console.log(\"Total jobs returned:\", allJobs.length);\r\n    console.log(\"Germany-relevant:\", matching.length);\r\n    console.log(\"Unique Germany jobs saved:\", combined.length);\r\n\r\n    matching.forEach((job, index) => {\r\n        console.log(\r\n            (index + 1) + \". \" +\r\n            job.title + \" | \" +\r\n            job.company + \" | \" +\r\n            job.location + \" | \" +\r\n            job.location_match\r\n        );\r\n    });\r\n\r\n    pm.test(\"Job feed processed\", function () {\r\n        pm.expect(allJobs).to.be.an(\"array\");\r\n    });\r\n\r\n    pm.test(\"Germany location filter applied\", function () {\r\n        pm.expect(matching.length)\r\n            .to.be.at.most(allJobs.length);\r\n    });\r\n});\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://revopscareers.com/?feed=job_feed&search_location=Berlin&posts_per_page=100",
+              "protocol": "https",
+              "host": [
+                "revopscareers",
+                "com"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "feed",
+                  "value": "job_feed"
+                },
+                {
+                  "key": "search_location",
+                  "value": "Berlin"
+                },
+                {
+                  "key": "posts_per_page",
+                  "value": "100"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "17 - RevOps Careers Hamburg",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r\nconst xml2js = require(\"xml2js\");\r\n\r\nconst parser = new xml2js.Parser({\r\n    explicitArray: false,\r\n    trim: true\r\n});\r\n\r\nconst xml = pm.response.text();\r\nconst requestName = pm.info.requestName;\r\n\r\npm.test(\"HTTP 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"RSS XML returned\", function () {\r\n    pm.expect(xml).to.include(\"<rss\");\r\n});\r\n\r\nfunction text(value) {\r\n    if (typeof value === \"string\") return value.trim();\r\n    if (typeof value === \"number\") return String(value);\r\n    if (value && typeof value === \"object\") {\r\n        return String(value._ || \"\").trim();\r\n    }\r\n    return \"\";\r\n}\r\n\r\nparser.parseString(xml, function (err, data) {\r\n    if (err || !data || !data.rss) {\r\n        console.error(\"RSS parsing failed:\", err);\r\n        pm.test(\"RSS parsed\", function () {\r\n            pm.expect.fail(\"Invalid RSS XML\");\r\n        });\r\n        return;\r\n    }\r\n\r\n    const channel = data.rss.channel || {};\r\n    const raw = channel.item || [];\r\n    const items = Array.isArray(raw) ? raw : [raw];\r\n\r\n    const allJobs = items.map(job => ({\r\n        id: text(job.guid) || text(job.link),\r\n        title: text(job.title),\r\n        company: text(job[\"job_listing:company\"]),\r\n        location: text(job[\"job_listing:location\"]),\r\n        job_type: text(job[\"job_listing:job_type\"]),\r\n        category: text(job[\"job_listing:job_category\"]),\r\n        description: text(job.description),\r\n        url: text(job.link),\r\n        published: text(job.pubDate),\r\n        source: \"RevOps Careers\"\r\n    }));\r\n\r\n    // Germany-wide, including Berlin and Hamburg\r\n    const germanLocation =\r\n        /\\b(germany|deutschland|berlin|hamburg|munich|münchen|frankfurt|cologne|köln|düsseldorf|stuttgart|leipzig|bonn|hannover)\\b/i;\r\n\r\n    const europeLocation =\r\n        /\\b(europe|emea|european union|eu-wide)\\b/i;\r\n\r\n    function classify(job) {\r\n        const location = job.location;\r\n        const remote = /remote/i.test(job.job_type) ||\r\n                       /remote/i.test(location);\r\n\r\n        if (germanLocation.test(location)) {\r\n            return \"Germany location\";\r\n        }\r\n\r\n        if (remote && europeLocation.test(location)) {\r\n            return \"Remote Europe/EMEA - verify eligibility\";\r\n        }\r\n\r\n        return \"\";\r\n    }\r\n\r\n    const matching = allJobs\r\n        .map(job => ({\r\n            ...job,\r\n            location_match: classify(job)\r\n        }))\r\n        .filter(job => job.location_match !== \"\");\r\n\r\n    // Merge with existing RevOps jobs\r\n    let existing = [];\r\n\r\n    try {\r\n        existing = JSON.parse(\r\n            pm.environment.get(\"revops_germany_jobs\") || \"[]\"\r\n        );\r\n    } catch (e) {\r\n        existing = [];\r\n    }\r\n\r\n    const unique = new Map();\r\n\r\n    [...existing, ...matching].forEach(job => {\r\n        if (job.id) {\r\n            unique.set(job.id, job);\r\n        }\r\n    });\r\n\r\n    const combined = Array.from(unique.values());\r\n\r\n    pm.environment.set(\r\n        \"revops_germany_jobs\",\r\n        JSON.stringify(combined)\r\n    );\r\n\r\n    pm.environment.set(\r\n        \"revops_germany_count\",\r\n        String(combined.length)\r\n    );\r\n\r\n    console.log(\"================================\");\r\n    console.log(\"REQUEST:\", requestName);\r\n    console.log(\"Total jobs returned:\", allJobs.length);\r\n    console.log(\"Germany-relevant:\", matching.length);\r\n    console.log(\"Unique Germany jobs saved:\", combined.length);\r\n\r\n    matching.forEach((job, index) => {\r\n        console.log(\r\n            (index + 1) + \". \" +\r\n            job.title + \" | \" +\r\n            job.company + \" | \" +\r\n            job.location + \" | \" +\r\n            job.location_match\r\n        );\r\n    });\r\n\r\n    pm.test(\"Job feed processed\", function () {\r\n        pm.expect(allJobs).to.be.an(\"array\");\r\n    });\r\n\r\n    pm.test(\"Germany location filter applied\", function () {\r\n        pm.expect(matching.length)\r\n            .to.be.at.most(allJobs.length);\r\n    });\r\n});\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://revopscareers.com/?feed=job_feed&search_location=Hamburg&posts_per_page=100",
+              "protocol": "https",
+              "host": [
+                "revopscareers",
+                "com"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "feed",
+                  "value": "job_feed"
+                },
+                {
+                  "key": "search_location",
+                  "value": "Hamburg"
+                },
+                {
+                  "key": "posts_per_page",
+                  "value": "100"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "18 - RevOps Careers Germany",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r\nconst xml2js = require(\"xml2js\");\r\n\r\nconst parser = new xml2js.Parser({\r\n    explicitArray: false,\r\n    trim: true\r\n});\r\n\r\nconst xml = pm.response.text();\r\nconst requestName = pm.info.requestName;\r\n\r\npm.test(\"HTTP 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"RSS XML returned\", function () {\r\n    pm.expect(xml).to.include(\"<rss\");\r\n});\r\n\r\nfunction text(value) {\r\n    if (typeof value === \"string\") return value.trim();\r\n    if (typeof value === \"number\") return String(value);\r\n    if (value && typeof value === \"object\") {\r\n        return String(value._ || \"\").trim();\r\n    }\r\n    return \"\";\r\n}\r\n\r\nparser.parseString(xml, function (err, data) {\r\n    if (err || !data || !data.rss) {\r\n        console.error(\"RSS parsing failed:\", err);\r\n        pm.test(\"RSS parsed\", function () {\r\n            pm.expect.fail(\"Invalid RSS XML\");\r\n        });\r\n        return;\r\n    }\r\n\r\n    const channel = data.rss.channel || {};\r\n    const raw = channel.item || [];\r\n    const items = Array.isArray(raw) ? raw : [raw];\r\n\r\n    const allJobs = items.map(job => ({\r\n        id: text(job.guid) || text(job.link),\r\n        title: text(job.title),\r\n        company: text(job[\"job_listing:company\"]),\r\n        location: text(job[\"job_listing:location\"]),\r\n        job_type: text(job[\"job_listing:job_type\"]),\r\n        category: text(job[\"job_listing:job_category\"]),\r\n        description: text(job.description),\r\n        url: text(job.link),\r\n        published: text(job.pubDate),\r\n        source: \"RevOps Careers\"\r\n    }));\r\n\r\n    // Germany-wide, including Berlin and Hamburg\r\n    const germanLocation =\r\n        /\\b(germany|deutschland|berlin|hamburg|munich|münchen|frankfurt|cologne|köln|düsseldorf|stuttgart|leipzig|bonn|hannover)\\b/i;\r\n\r\n    const europeLocation =\r\n        /\\b(europe|emea|european union|eu-wide)\\b/i;\r\n\r\n    function classify(job) {\r\n        const location = job.location;\r\n        const remote = /remote/i.test(job.job_type) ||\r\n                       /remote/i.test(location);\r\n\r\n        if (germanLocation.test(location)) {\r\n            return \"Germany location\";\r\n        }\r\n\r\n        if (remote && europeLocation.test(location)) {\r\n            return \"Remote Europe/EMEA - verify eligibility\";\r\n        }\r\n\r\n        return \"\";\r\n    }\r\n\r\n    const matching = allJobs\r\n        .map(job => ({\r\n            ...job,\r\n            location_match: classify(job)\r\n        }))\r\n        .filter(job => job.location_match !== \"\");\r\n\r\n    // Merge with existing RevOps jobs\r\n    let existing = [];\r\n\r\n    try {\r\n        existing = JSON.parse(\r\n            pm.environment.get(\"revops_germany_jobs\") || \"[]\"\r\n        );\r\n    } catch (e) {\r\n        existing = [];\r\n    }\r\n\r\n    const unique = new Map();\r\n\r\n    [...existing, ...matching].forEach(job => {\r\n        if (job.id) {\r\n            unique.set(job.id, job);\r\n        }\r\n    });\r\n\r\n    const combined = Array.from(unique.values());\r\n\r\n    pm.environment.set(\r\n        \"revops_germany_jobs\",\r\n        JSON.stringify(combined)\r\n    );\r\n\r\n    pm.environment.set(\r\n        \"revops_germany_count\",\r\n        String(combined.length)\r\n    );\r\n\r\n    console.log(\"================================\");\r\n    console.log(\"REQUEST:\", requestName);\r\n    console.log(\"Total jobs returned:\", allJobs.length);\r\n    console.log(\"Germany-relevant:\", matching.length);\r\n    console.log(\"Unique Germany jobs saved:\", combined.length);\r\n\r\n    matching.forEach((job, index) => {\r\n        console.log(\r\n            (index + 1) + \". \" +\r\n            job.title + \" | \" +\r\n            job.company + \" | \" +\r\n            job.location + \" | \" +\r\n            job.location_match\r\n        );\r\n    });\r\n\r\n    pm.test(\"Job feed processed\", function () {\r\n        pm.expect(allJobs).to.be.an(\"array\");\r\n    });\r\n\r\n    pm.test(\"Germany location filter applied\", function () {\r\n        pm.expect(matching.length)\r\n            .to.be.at.most(allJobs.length);\r\n    });\r\n});\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://revopscareers.com/?feed=job_feed&search_location=Germany&posts_per_page=100",
+              "protocol": "https",
+              "host": [
+                "revopscareers",
+                "com"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "feed",
+                  "value": "job_feed"
+                },
+                {
+                  "key": "search_location",
+                  "value": "Germany"
+                },
+                {
+                  "key": "posts_per_page",
+                  "value": "100"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "19 - RevOps Careers - Prepare & Score Jobs",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r\n/*\r\nREQUEST 19\r\nREVOPS CAREERS - PREPARE & SCORE JOBS\r\n\r\nInput:\r\n  revops_germany_jobs\r\n\r\nOutput:\r\n  revops_scored_jobs\r\n  revops_salesforce_ready\r\n  revops_review_jobs\r\n  revops_preparation_summary\r\n\r\nDoes NOT write to Salesforce.\r\n*/\r\n\r\nconst raw = pm.environment.get(\"revops_germany_jobs\");\r\n\r\nif (!raw) {\r\n    throw new Error(\r\n        \"Missing revops_germany_jobs. Run requests 16, 17 and 18 first.\"\r\n    );\r\n}\r\n\r\nlet sourceJobs;\r\n\r\ntry {\r\n    sourceJobs = JSON.parse(raw);\r\n} catch (e) {\r\n    throw new Error(\"RevOps jobs contain invalid JSON.\");\r\n}\r\n\r\nif (!Array.isArray(sourceJobs) || sourceJobs.length === 0) {\r\n    throw new Error(\"No RevOps jobs available.\");\r\n}\r\n\r\n// ---------- HELPERS ----------\r\n\r\nfunction clean(value) {\r\n    return String(value || \"\")\r\n        .replace(/<[^>]*>/g, \" \")\r\n        .replace(/&amp;|&#038;/gi, \"&\")\r\n        .replace(/&nbsp;/gi, \" \")\r\n        .replace(/\\s+/g, \" \")\r\n        .trim();\r\n}\r\n\r\nfunction normalized(value) {\r\n    return clean(value)\r\n        .toLowerCase()\r\n        .normalize(\"NFKD\")\r\n        .replace(/[\\u0300-\\u036f]/g, \"\");\r\n}\r\n\r\nfunction containsAny(text, terms) {\r\n    return terms.some(term =>\r\n        text.includes(normalized(term))\r\n    );\r\n}\r\n\r\nfunction countMatches(text, terms) {\r\n    return terms.filter(term =>\r\n        text.includes(normalized(term))\r\n    ).length;\r\n}\r\n\r\n// ---------- CAREER PATHS ----------\r\n\r\nconst paths = [\r\n    {\r\n        name: \"CRM / RevOps / Salesforce\",\r\n        titles: [\r\n            \"revenue operations\",\r\n            \"revops\",\r\n            \"sales operations\",\r\n            \"salesforce\",\r\n            \"crm manager\",\r\n            \"crm administrator\",\r\n            \"crm product owner\",\r\n            \"gtm engineer\",\r\n            \"go-to-market operations\",\r\n            \"sales automation\",\r\n            \"business systems\",\r\n            \"marketing operations\",\r\n            \"customer operations\"\r\n        ],\r\n        skills: [\r\n            \"salesforce\",\r\n            \"hubspot\",\r\n            \"crm\",\r\n            \"workflow\",\r\n            \"automation\",\r\n            \"integration\",\r\n            \"api\",\r\n            \"reporting\",\r\n            \"dashboard\",\r\n            \"data quality\",\r\n            \"sales operations\",\r\n            \"revenue operations\",\r\n            \"process improvement\",\r\n            \"requirements\",\r\n            \"stakeholder\",\r\n            \"postman\"\r\n        ]\r\n    },\r\n    {\r\n        name: \"Business Improvement / Operational Excellence\",\r\n        titles: [\r\n            \"operational excellence\",\r\n            \"business improvement\",\r\n            \"process improvement\",\r\n            \"business process\",\r\n            \"business transformation\",\r\n            \"continuous improvement\",\r\n            \"process manager\",\r\n            \"business analyst\",\r\n            \"value chain\",\r\n            \"process optimization\",\r\n            \"prozessoptimierung\",\r\n            \"geschaftsprozessmanagement\"\r\n        ],\r\n        skills: [\r\n            \"process mapping\",\r\n            \"bpmn\",\r\n            \"continuous improvement\",\r\n            \"lean\",\r\n            \"operational excellence\",\r\n            \"cost reduction\",\r\n            \"cost saving\",\r\n            \"value chain\",\r\n            \"business analysis\",\r\n            \"process optimization\",\r\n            \"prozessoptimierung\",\r\n            \"wertstromanalyse\",\r\n            \"kostensenkung\",\r\n            \"sap\",\r\n            \"stakeholder\",\r\n            \"reporting\"\r\n        ]\r\n    }\r\n];\r\n\r\n// ---------- LOCATION ----------\r\n\r\nfunction classifyLocation(job) {\r\n    const location = normalized(job.location);\r\n    const type = normalized(job.job_type);\r\n\r\n    const germany =\r\n        /\\b(germany|deutschland|berlin|hamburg|munich|munchen|frankfurt|cologne|koln|dusseldorf|stuttgart|leipzig|bonn|hannover|bremen|dresden|potsdam)\\b/;\r\n\r\n    const europe =\r\n        /\\b(europe|emea|european union|eu-wide)\\b/;\r\n\r\n    const isRemote =\r\n        /\\bremote\\b/.test(type + \" \" + location);\r\n\r\n    if (/\\bberlin\\b/.test(location)) {\r\n        return {\r\n            eligible: true,\r\n            category: \"Berlin\",\r\n            points: 20,\r\n            verified: true\r\n        };\r\n    }\r\n\r\n    if (/\\bhamburg\\b/.test(location)) {\r\n        return {\r\n            eligible: true,\r\n            category: \"Hamburg\",\r\n            points: 20,\r\n            verified: true\r\n        };\r\n    }\r\n\r\n    if (germany.test(location)) {\r\n        return {\r\n            eligible: true,\r\n            category: \"Germany\",\r\n            points: 12,\r\n            verified: true\r\n        };\r\n    }\r\n\r\n    if (isRemote && europe.test(location)) {\r\n        return {\r\n            eligible: true,\r\n            category: \"Remote Europe/EMEA\",\r\n            points: 12,\r\n            verified: false\r\n        };\r\n    }\r\n\r\n    return {\r\n        eligible: false,\r\n        category: \"Outside target geography\",\r\n        points: 0,\r\n        verified: false\r\n    };\r\n}\r\n\r\n// ---------- FIT SCORING ----------\r\n\r\nfunction scoreJob(job) {\r\n    const title = normalized(job.title);\r\n    const description = normalized(job.description);\r\n    const combined = title + \" \" + description;\r\n\r\n    const location = classifyLocation(job);\r\n\r\n    const pathScores = paths.map(path => {\r\n        const titleMatches =\r\n            countMatches(title, path.titles);\r\n\r\n        const skillMatches =\r\n            countMatches(combined, path.skills);\r\n\r\n        const titlePoints =\r\n            Math.min(30, titleMatches * 15);\r\n\r\n        const skillPoints =\r\n            Math.min(30, skillMatches * 5);\r\n\r\n        return {\r\n            path: path.name,\r\n            titlePoints,\r\n            skillPoints,\r\n            combined: titlePoints + skillPoints\r\n        };\r\n    });\r\n\r\n    pathScores.sort((a, b) =>\r\n        b.combined - a.combined\r\n    );\r\n\r\n    const best = pathScores[0];\r\n\r\n    // Employment type: up to 10 points\r\n    const type = normalized(job.job_type);\r\n\r\n    let employmentPoints = 0;\r\n\r\n    if (type.includes(\"full time\")) {\r\n        employmentPoints = 10;\r\n    } else if (type.includes(\"part time\")) {\r\n        employmentPoints = 7;\r\n    }\r\n\r\n    // Impact / nonprofit: up to 10 points\r\n    const impactTerms = [\r\n        \"nonprofit\",\r\n        \"non-profit\",\r\n        \"ngo\",\r\n        \"foundation\",\r\n        \"charity\",\r\n        \"humanitarian\",\r\n        \"sustainability\",\r\n        \"social impact\",\r\n        \"gemeinnutzig\"\r\n    ];\r\n\r\n    const impactPoints =\r\n        containsAny(combined, impactTerms) ? 10 : 0;\r\n\r\n    const score = Math.min(\r\n        100,\r\n        best.combined +\r\n        location.points +\r\n        employmentPoints +\r\n        impactPoints\r\n    );\r\n\r\n    return {\r\n        score,\r\n        career_path: best.path,\r\n        title_points: best.titlePoints,\r\n        skills_points: best.skillPoints,\r\n        location_points: location.points,\r\n        employment_points: employmentPoints,\r\n        impact_points: impactPoints,\r\n        location_category: location.category,\r\n        location_verified: location.verified,\r\n        location_eligible: location.eligible\r\n    };\r\n}\r\n\r\n// ---------- NORMALIZE ----------\r\n\r\nconst normalizedJobs = sourceJobs.map(job => {\r\n    const result = {\r\n        id: clean(job.id || job.url),\r\n        title: clean(job.title),\r\n        company: clean(job.company),\r\n        location: clean(job.location),\r\n        job_type: clean(job.job_type),\r\n        category: clean(job.category),\r\n        description: clean(job.description),\r\n        url: clean(job.url),\r\n        published: clean(job.published),\r\n        source: \"RevOps Careers\"\r\n    };\r\n\r\n    return {\r\n        ...result,\r\n        ...scoreJob(result)\r\n    };\r\n});\r\n\r\n// ---------- DEDUPLICATE ----------\r\n\r\nconst uniqueMap = new Map();\r\n\r\nnormalizedJobs.forEach(job => {\r\n    if (job.id) {\r\n        uniqueMap.set(job.id, job);\r\n    }\r\n});\r\n\r\nconst uniqueJobs = Array.from(uniqueMap.values());\r\n\r\n// ---------- QUALITY CHECKS ----------\r\n\r\nconst prepared = uniqueJobs.map(job => {\r\n    const issues = [];\r\n\r\n    if (!job.title) issues.push(\"Missing title\");\r\n    if (!job.company) issues.push(\"Missing company\");\r\n    if (!job.url) issues.push(\"Missing URL\");\r\n    if (!job.location) issues.push(\"Missing location\");\r\n    if (!job.description) {\r\n        issues.push(\"Missing description\");\r\n    }\r\n\r\n    if (!job.location_eligible) {\r\n        issues.push(\"Location not eligible\");\r\n    }\r\n\r\n    if (!job.location_verified) {\r\n        issues.push(\"Verify remote Germany eligibility\");\r\n    }\r\n\r\n    if (job.score < 40) {\r\n        issues.push(\"Low fit score\");\r\n    }\r\n\r\n    return {\r\n        ...job,\r\n        quality_issues: issues,\r\n        needs_review: issues.length > 0\r\n    };\r\n});\r\n\r\n// ---------- PREPARE SALESFORCE ----------\r\n\r\n// Existing Salesforce object fields only.\r\n// Application_Status__c intentionally excluded.\r\n\r\nconst salesforceReady = prepared\r\n    .filter(job =>\r\n        job.location_eligible &&\r\n        job.title &&\r\n        job.company &&\r\n        job.url &&\r\n        job.location_verified &&\r\n        job.score >= 40\r\n    )\r\n    .map(job => ({\r\n        external_id: \"REVOPS:\" + job.id,\r\n        payload: {\r\n            Name: job.title.substring(0, 80),\r\n            Company__c: job.company,\r\n            Location__c: job.location,\r\n            Job_URL__c: job.url,\r\n            Source__c: \"RevOps Careers\",\r\n            Fit_Score__c: job.score\r\n        },\r\n        career_path: job.career_path,\r\n        original_url: job.url,\r\n        description: job.description,\r\n        fit_score: job.score\r\n    }));\r\n\r\nconst reviewJobs = prepared.filter(job =>\r\n    job.needs_review\r\n);\r\n\r\n// ---------- SAVE ----------\r\n\r\npm.environment.set(\r\n    \"revops_scored_jobs\",\r\n    JSON.stringify(prepared)\r\n);\r\n\r\npm.environment.set(\r\n    \"revops_salesforce_ready\",\r\n    JSON.stringify(salesforceReady)\r\n);\r\n\r\npm.environment.set(\r\n    \"revops_review_jobs\",\r\n    JSON.stringify(reviewJobs)\r\n);\r\n\r\nconst summary = {\r\n    input_jobs: sourceJobs.length,\r\n    unique_jobs: uniqueJobs.length,\r\n    salesforce_ready: salesforceReady.length,\r\n    review_jobs: reviewJobs.length,\r\n    highest_score: Math.max(\r\n        ...prepared.map(job => job.score)\r\n    ),\r\n    berlin: prepared.filter(\r\n        job => job.location_category === \"Berlin\"\r\n    ).length,\r\n    hamburg: prepared.filter(\r\n        job => job.location_category === \"Hamburg\"\r\n    ).length,\r\n    germany_other: prepared.filter(\r\n        job => job.location_category === \"Germany\"\r\n    ).length,\r\n    remote_emea_review: prepared.filter(\r\n        job => job.location_category === \"Remote Europe/EMEA\"\r\n    ).length\r\n};\r\n\r\npm.environment.set(\r\n    \"revops_preparation_summary\",\r\n    JSON.stringify(summary)\r\n);\r\n\r\n// ---------- CONSOLE ----------\r\n\r\nconsole.log(\"================================\");\r\nconsole.log(\"REVOPS CAREERS - PREPARATION\");\r\nconsole.log(\"================================\");\r\n\r\nconsole.log(\"Input jobs:\", summary.input_jobs);\r\nconsole.log(\"Unique jobs:\", summary.unique_jobs);\r\nconsole.log(\"Salesforce ready:\", summary.salesforce_ready);\r\nconsole.log(\"Review jobs:\", summary.review_jobs);\r\nconsole.log(\"Highest score:\", summary.highest_score);\r\n\r\nconsole.log(\"Berlin:\", summary.berlin);\r\nconsole.log(\"Hamburg:\", summary.hamburg);\r\nconsole.log(\"Other Germany:\", summary.germany_other);\r\nconsole.log(\r\n    \"Remote EMEA needing verification:\",\r\n    summary.remote_emea_review\r\n);\r\n\r\nconsole.log(\"TOP 15 JOBS:\");\r\n\r\nprepared\r\n    .slice()\r\n    .sort((a, b) => b.score - a.score)\r\n    .slice(0, 15)\r\n    .forEach((job, i) => {\r\n        console.log(\r\n            (i + 1) + \". \" +\r\n            job.score + \"/100 | \" +\r\n            job.title + \" | \" +\r\n            job.company + \" | \" +\r\n            job.location\r\n        );\r\n    });\r\n\r\nconsole.log(\"PREPARATION COMPLETE\");\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://revopscareers.com/?feed=job_feed",
+              "protocol": "https",
+              "host": [
+                "revopscareers",
+                "com"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "feed",
+                  "value": "job_feed"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "20 - RevOps Careers - Validate Salesforce Import",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r\n/*\r\nREQUEST 20\r\nREVOPS CAREERS - VALIDATE SALESFORCE IMPORT\r\n\r\nInput:\r\n  revops_salesforce_ready\r\n  scored_adzuna_jobs\r\n\r\nOutput:\r\n  revops_final_import_jobs\r\n  revops_cross_source_duplicates\r\n  revops_import_summary\r\n\r\nNo Salesforce writes.\r\nNo employment-level exclusions.\r\n*/\r\n\r\nfunction readArray(name, required = false) {\r\n    const raw = pm.environment.get(name);\r\n\r\n    if (!raw) {\r\n        if (required) {\r\n            throw new Error(\"Missing variable: \" + name);\r\n        }\r\n        return [];\r\n    }\r\n\r\n    const parsed = JSON.parse(raw);\r\n\r\n    if (!Array.isArray(parsed)) {\r\n        throw new Error(name + \" must be an array.\");\r\n    }\r\n\r\n    return parsed;\r\n}\r\n\r\nconst revops = readArray(\r\n    \"revops_salesforce_ready\",\r\n    true\r\n);\r\n\r\nconst adzuna = readArray(\r\n    \"scored_adzuna_jobs\",\r\n    true\r\n);\r\n\r\n// Normalize text for duplicate comparisons\r\nfunction normalize(value) {\r\n    return String(value || \"\")\r\n        .toLowerCase()\r\n        .normalize(\"NFKD\")\r\n        .replace(/[\\u0300-\\u036f]/g, \"\")\r\n        .replace(/&amp;|&#038;/gi, \"&\")\r\n        .replace(/[^a-z0-9]+/g, \" \")\r\n        .replace(/\\s+/g, \" \")\r\n        .trim();\r\n}\r\n\r\nfunction jobIdentity(job) {\r\n    const p = job.payload || job;\r\n\r\n    return {\r\n        title: normalize(\r\n            p.Name || job.title\r\n        ),\r\n        company: normalize(\r\n            p.Company__c ||\r\n            job.company ||\r\n            job.company_name\r\n        ),\r\n        location: normalize(\r\n            p.Location__c || job.location\r\n        )\r\n    };\r\n}\r\n\r\n// Build Adzuna comparison keys\r\nconst adzunaKeys = new Set();\r\n\r\nadzuna.forEach(job => {\r\n    const identity = jobIdentity(job);\r\n\r\n    if (identity.title && identity.company) {\r\n        adzunaKeys.add(\r\n            identity.company + \"|\" +\r\n            identity.title\r\n        );\r\n    }\r\n});\r\n\r\n// Short deterministic hash\r\n// FNV-1a, two independent passes\r\nfunction hash32(value, seed) {\r\n    let hash = seed >>> 0;\r\n\r\n    for (let i = 0; i < value.length; i++) {\r\n        hash ^= value.charCodeAt(i);\r\n        hash = Math.imul(hash, 16777619);\r\n    }\r\n\r\n    return (hash >>> 0)\r\n        .toString(16)\r\n        .padStart(8, \"0\");\r\n}\r\n\r\nfunction makeExternalId(url) {\r\n    const value = String(url || \"\");\r\n\r\n    return \"REVOPS-\" +\r\n        hash32(value, 2166136261) +\r\n        hash32(value, 2246822519);\r\n}\r\n\r\nconst duplicates = [];\r\nconst candidates = [];\r\nconst seenIds = new Set();\r\n\r\nrevops.forEach(job => {\r\n    const identity = jobIdentity(job);\r\n\r\n    const key =\r\n        identity.company + \"|\" +\r\n        identity.title;\r\n\r\n    if (adzunaKeys.has(key)) {\r\n        duplicates.push({\r\n            reason: \"Company + title matches Adzuna\",\r\n            title: job.payload.Name,\r\n            company: job.payload.Company__c,\r\n            source_url: job.original_url\r\n        });\r\n        return;\r\n    }\r\n\r\n    const externalId = makeExternalId(\r\n        job.original_url\r\n    );\r\n\r\n    if (seenIds.has(externalId)) {\r\n        duplicates.push({\r\n            reason: \"Duplicate RevOps external ID\",\r\n            title: job.payload.Name,\r\n            company: job.payload.Company__c\r\n        });\r\n        return;\r\n    }\r\n\r\n    seenIds.add(externalId);\r\n\r\n    candidates.push({\r\n        external_id: externalId,\r\n        payload: {\r\n            ...job.payload,\r\n            Source__c: \"RevOps Careers\"\r\n        },\r\n        fit_score: job.fit_score,\r\n        career_path: job.career_path,\r\n        application_link_status:\r\n            \"Employer link not verified\",\r\n        source_url: job.original_url\r\n    });\r\n});\r\n\r\nconst summary = {\r\n    revops_candidates: revops.length,\r\n    adzuna_compared: adzuna.length,\r\n    duplicates_flagged: duplicates.length,\r\n    final_import_candidates: candidates.length\r\n};\r\n\r\npm.environment.set(\r\n    \"revops_final_import_jobs\",\r\n    JSON.stringify(candidates)\r\n);\r\n\r\npm.environment.set(\r\n    \"revops_cross_source_duplicates\",\r\n    JSON.stringify(duplicates)\r\n);\r\n\r\npm.environment.set(\r\n    \"revops_import_summary\",\r\n    JSON.stringify(summary)\r\n);\r\n\r\npm.environment.set(\r\n    \"revops_import_index\",\r\n    \"0\"\r\n);\r\n\r\nconsole.log(\"================================\");\r\nconsole.log(\"REVOPS - SALESFORCE VALIDATION\");\r\nconsole.log(\"================================\");\r\n\r\nconsole.log(\r\n    \"RevOps candidates:\",\r\n    summary.revops_candidates\r\n);\r\n\r\nconsole.log(\r\n    \"Adzuna jobs compared:\",\r\n    summary.adzuna_compared\r\n);\r\n\r\nconsole.log(\r\n    \"Potential duplicates:\",\r\n    summary.duplicates_flagged\r\n);\r\n\r\nconsole.log(\r\n    \"Final import candidates:\",\r\n    summary.final_import_candidates\r\n);\r\n\r\nconsole.log(\"FIRST 10 IMPORT CANDIDATES:\");\r\n\r\ncandidates.slice(0, 10).forEach((job, i) => {\r\n    console.log(\r\n        (i + 1) + \". \" +\r\n        job.fit_score + \"/100 | \" +\r\n        job.payload.Name + \" | \" +\r\n        job.payload.Company__c +\r\n        \" | ID: \" + job.external_id\r\n    );\r\n});\r\n\r\nconsole.log(\"VALIDATION COMPLETE\");\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://revopscareers.com/?feed=job_feed",
+              "protocol": "https",
+              "host": [
+                "revopscareers",
+                "com"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "feed",
+                  "value": "job_feed"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "21 - RevOps Careers - Skills Intelligence",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r\n/*\r\nREQUEST 21 - REVOPS SKILLS INTELLIGENCE\r\n\r\nAnalyze:\r\n1. All 243 RevOps jobs\r\n2. Final Salesforce import candidates\r\n3. Technology frequency\r\n4. Skills appearing together\r\n5. Development priorities\r\n\r\nNo Salesforce writes.\r\n*/\r\n\r\nfunction readArray(name) {\r\n    const value = pm.environment.get(name);\r\n\r\n    if (!value) {\r\n        throw new Error(\"Missing variable: \" + name);\r\n    }\r\n\r\n    const data = JSON.parse(value);\r\n\r\n    if (!Array.isArray(data)) {\r\n        throw new Error(name + \" must contain an array\");\r\n    }\r\n\r\n    return data;\r\n}\r\n\r\nconst allJobs = readArray(\"revops_scored_jobs\");\r\nconst shortlisted = readArray(\"revops_final_import_jobs\");\r\n\r\n// Skills dictionary\r\nconst skills = {\r\n    \"CRM\": {\r\n        \"Salesforce\": /\\bsalesforce\\b/i,\r\n        \"HubSpot\": /\\bhubspot\\b/i,\r\n        \"Dynamics 365\": /\\bdynamics\\s*365\\b|\\bmicrosoft dynamics\\b/i\r\n    },\r\n\r\n    \"Automation\": {\r\n        \"n8n\": /\\bn8n\\b/i,\r\n        \"Zapier\": /\\bzapier\\b/i,\r\n        \"Make\": /\\bmake\\.com\\b|\\bintegromat\\b/i,\r\n        \"Workato\": /\\bworkato\\b/i,\r\n        \"Salesforce Flow\": /\\bsalesforce flow\\b|\\bflow builder\\b/i\r\n    },\r\n\r\n    \"Data & Analytics\": {\r\n        \"SQL\": /\\bsql\\b/i,\r\n        \"Python\": /\\bpython\\b/i,\r\n        \"Power BI\": /\\bpower\\s*bi\\b/i,\r\n        \"Tableau\": /\\btableau\\b/i,\r\n        \"Looker\": /\\blooker\\b/i,\r\n        \"Excel\": /\\bexcel\\b/i,\r\n        \"Google Sheets\": /\\bgoogle sheets\\b/i\r\n    },\r\n\r\n    \"Integration\": {\r\n        \"REST API\": /\\brest(?:ful)?\\s*api\\b/i,\r\n        \"API\": /\\bapis?\\b/i,\r\n        \"Postman\": /\\bpostman\\b/i,\r\n        \"Webhooks\": /\\bwebhooks?\\b/i,\r\n        \"JSON\": /\\bjson\\b/i\r\n    },\r\n\r\n    \"GTM Technology\": {\r\n        \"Clay\": /\\bclay(?:\\.com)?\\b/i,\r\n        \"Apollo\": /\\bapollo(?:\\.io)?\\b/i,\r\n        \"Outreach\": /\\boutreach(?:\\.io)?\\b/i,\r\n        \"Salesloft\": /\\bsalesloft\\b/i,\r\n        \"Gong\": /\\bgong\\b/i,\r\n        \"Clari\": /\\bclari\\b/i\r\n    },\r\n\r\n    \"Marketing Automation\": {\r\n        \"Braze\": /\\bbraze\\b/i,\r\n        \"Marketo\": /\\bmarketo\\b/i,\r\n        \"Iterable\": /\\biterable\\b/i,\r\n        \"Pardot\": /\\bpardot\\b|\\bmarketing cloud account engagement\\b/i\r\n    },\r\n\r\n    \"Revenue Systems\": {\r\n        \"CPQ\": /\\bcpq\\b/i,\r\n        \"Revenue Cloud\": /\\brevenue cloud\\b/i,\r\n        \"DealHub\": /\\bdealhub\\b/i\r\n    },\r\n\r\n    \"Process Improvement\": {\r\n        \"BPMN\": /\\bbpmn\\b/i,\r\n        \"Lean\": /\\blean\\b/i,\r\n        \"Six Sigma\": /\\bsix sigma\\b/i,\r\n        \"Process Mining\": /\\bprocess mining\\b/i,\r\n        \"SAP Signavio\": /\\bsignavio\\b/i\r\n    }\r\n};\r\n\r\n// Read searchable text\r\nfunction jobText(job) {\r\n    const p = job.payload || job;\r\n\r\n    return [\r\n        job.title || p.Name || \"\",\r\n        job.description || \"\",\r\n        job.category || \"\",\r\n        job.job_type || \"\"\r\n    ].join(\" \");\r\n}\r\n\r\n// Extract skills from a job\r\nfunction extractSkills(job) {\r\n    const text = jobText(job);\r\n    const found = [];\r\n\r\n    Object.keys(skills).forEach(category => {\r\n        Object.entries(skills[category]).forEach(\r\n            ([skill, pattern]) => {\r\n                if (pattern.test(text)) {\r\n                    found.push({\r\n                        skill,\r\n                        category\r\n                    });\r\n                }\r\n            }\r\n        );\r\n    });\r\n\r\n    return found;\r\n}\r\n\r\n// Analyze one dataset\r\nfunction analyze(jobs, label) {\r\n    const counts = {};\r\n    const pairs = {};\r\n    const jobResults = [];\r\n\r\n    jobs.forEach(job => {\r\n        const matches = extractSkills(job);\r\n        const names = [...new Set(\r\n            matches.map(m => m.skill)\r\n        )].sort();\r\n\r\n        names.forEach(name => {\r\n            counts[name] = (counts[name] || 0) + 1;\r\n        });\r\n\r\n        // Count technology combinations\r\n        for (let i = 0; i < names.length; i++) {\r\n            for (let j = i + 1; j < names.length; j++) {\r\n                const key = names[i] + \" + \" + names[j];\r\n                pairs[key] = (pairs[key] || 0) + 1;\r\n            }\r\n        }\r\n\r\n        const p = job.payload || job;\r\n\r\n        jobResults.push({\r\n            title: job.title || p.Name || \"\",\r\n            company: job.company || p.Company__c || \"\",\r\n            fit_score: job.score || job.fit_score || 0,\r\n            skills: names,\r\n            source_url: job.url || job.source_url || \"\"\r\n        });\r\n    });\r\n\r\n    const ranking = Object.entries(counts)\r\n        .map(([skill, count]) => ({\r\n            skill,\r\n            count,\r\n            percentage: jobs.length\r\n                ? Number(\r\n                    (count / jobs.length * 100).toFixed(1)\r\n                )\r\n                : 0\r\n        }))\r\n        .sort((a, b) => b.count - a.count);\r\n\r\n    const combinations = Object.entries(pairs)\r\n        .map(([pair, count]) => ({\r\n            pair,\r\n            count\r\n        }))\r\n        .sort((a, b) => b.count - a.count)\r\n        .slice(0, 20);\r\n\r\n    return {\r\n        label,\r\n        total_jobs: jobs.length,\r\n        ranking,\r\n        combinations,\r\n        job_results: jobResults\r\n    };\r\n}\r\n\r\nconst market = analyze(allJobs, \"All RevOps jobs\");\r\nconst target = analyze(\r\n    shortlisted,\r\n    \"Shortlisted import candidates\"\r\n);\r\n\r\n// Save complete analysis\r\npm.environment.set(\r\n    \"revops_skills_market\",\r\n    JSON.stringify(market)\r\n);\r\n\r\npm.environment.set(\r\n    \"revops_skills_shortlist\",\r\n    JSON.stringify(target)\r\n);\r\n\r\n// Display results\r\nfunction printReport(report) {\r\n    console.log(\"================================\");\r\n    console.log(report.label.toUpperCase());\r\n    console.log(\"Jobs analyzed:\", report.total_jobs);\r\n    console.log(\"================================\");\r\n\r\n    console.log(\"TOP 25 TECHNOLOGIES:\");\r\n\r\n    report.ranking.slice(0, 25).forEach((item, i) => {\r\n        console.log(\r\n            (i + 1) + \". \" +\r\n            item.skill + \" | \" +\r\n            item.count + \" jobs | \" +\r\n            item.percentage + \"%\"\r\n        );\r\n    });\r\n\r\n    console.log(\"TOP 10 SKILL COMBINATIONS:\");\r\n\r\n    report.combinations.slice(0, 10)\r\n        .forEach((item, i) => {\r\n            console.log(\r\n                (i + 1) + \". \" +\r\n                item.pair + \" | \" +\r\n                item.count + \" jobs\"\r\n            );\r\n        });\r\n}\r\n\r\nprintReport(market);\r\nprintReport(target);\r\n\r\nconsole.log(\"================================\");\r\nconsole.log(\"SKILLS INTELLIGENCE COMPLETE\");\r\nconsole.log(\"================================\");\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://revopscareers.com/?feed=job_feed",
+              "protocol": "https",
+              "host": [
+                "revopscareers",
+                "com"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "feed",
+                  "value": "job_feed"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "22 - RevOps Careers - Job Requirements Enrichment",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r\n/*\r\nREQUEST 22 - AFTER RESPONSE\r\n\r\nExtract:\r\n- Full job description\r\n- Technical tools\r\n- Technical capabilities\r\n- Potential application URLs\r\n\r\nSave each successful result.\r\nAdvance only after a successful extraction.\r\n*/\r\n\r\nconst cheerio = require(\"cheerio\");\r\n\r\nconst raw = pm.environment.get(\"revops_final_import_jobs\");\r\nconst jobs = JSON.parse(raw);\r\n\r\nconst index = Number(\r\n    pm.variables.get(\"revops_current_enrichment_index\")\r\n);\r\n\r\nconst job = jobs[index];\r\n\r\nconst existing = JSON.parse(\r\n    pm.environment.get(\"revops_enriched_jobs\") || \"[]\"\r\n);\r\n\r\nfunction cleanText(value) {\r\n    return String(value || \"\")\r\n        .replace(/\\s+/g, \" \")\r\n        .trim();\r\n}\r\n\r\nfunction absoluteUrl(href, base) {\r\n    try {\r\n        return new URL(href, base).href;\r\n    } catch (error) {\r\n        return href;\r\n    }\r\n}\r\n\r\nconst status = pm.response.code;\r\n\r\npm.test(\"Job page returned HTTP 200\", function () {\r\n    pm.expect(status).to.equal(200);\r\n});\r\n\r\nif (status !== 200) {\r\n    console.error(\"HTTP error:\", status);\r\n    console.error(pm.response.text().substring(0, 500));\r\n    pm.execution.setNextRequest(null);\r\n} else {\r\n\r\n    const html = pm.response.text();\r\n    const $ = cheerio.load(html);\r\n\r\n    $(\"script, style, nav, footer\").remove();\r\n\r\n    const selectors = [\r\n        \".job_description\",\r\n        \".job_listing-description\",\r\n        \".single_job_listing .job_description\",\r\n        \"article .entry-content\"\r\n    ];\r\n\r\n    let description = \"\";\r\n    let matchedSelector = \"\";\r\n\r\n    for (const selector of selectors) {\r\n        const el = $(selector).first();\r\n        const value = cleanText(el.text());\r\n\r\n        if (value.length > 100) {\r\n            description = value;\r\n            matchedSelector = selector;\r\n            break;\r\n        }\r\n    }\r\n\r\n    const toolPatterns = {\r\n        Salesforce: /\\bsalesforce\\b/i,\r\n        HubSpot: /\\bhubspot\\b/i,\r\n        \"Dynamics 365\": /\\bdynamics\\s*365\\b|\\bmicrosoft dynamics\\b/i,\r\n        SQL: /\\bsql\\b/i,\r\n        Python: /\\bpython\\b/i,\r\n        n8n: /\\bn8n\\b/i,\r\n        Clay: /\\bclay(?:\\.com)?\\b/i,\r\n        Zapier: /\\bzapier\\b/i,\r\n        Make: /\\bmake\\.com\\b|\\bintegromat\\b/i,\r\n        Workato: /\\bworkato\\b/i,\r\n        Chargebee: /\\bchargebee\\b/i,\r\n        Tableau: /\\btableau\\b/i,\r\n        \"Power BI\": /\\bpower\\s*bi\\b/i,\r\n        Looker: /\\blooker\\b/i,\r\n        Marketo: /\\bmarketo\\b/i,\r\n        Braze: /\\bbraze\\b/i,\r\n        Iterable: /\\biterable\\b/i,\r\n        Apollo: /\\bapollo(?:\\.io)?\\b/i,\r\n        Salesloft: /\\bsalesloft\\b/i,\r\n        Gong: /\\bgong\\b/i,\r\n        Clari: /\\bclari\\b/i,\r\n        CPQ: /\\bcpq\\b/i,\r\n        \"Google Sheets\": /\\bgoogle sheets\\b/i,\r\n        Excel: /\\bexcel\\b/i,\r\n        Postman: /\\bpostman\\b/i\r\n    };\r\n\r\n    const capabilityPatterns = {\r\n        \"CRM Architecture\": /\\bcrm architecture\\b|\\bcrm data model\\b/i,\r\n        \"Data Modelling\": /\\bdata model(?:ling|ing)?\\b/i,\r\n        \"API Integration\": /\\bapi integrations?\\b|\\brest apis?\\b|\\bapi development\\b/i,\r\n        \"Systems Integration\": /\\bsystems? integrations?\\b|\\bintegration skills\\b/i,\r\n        \"Workflow Automation\": /\\bworkflow automation\\b|\\bautomations?\\b/i,\r\n        \"AI Workflows\": /\\bai workflows?\\b|\\bai agents?\\b/i,\r\n        \"Data Quality\": /\\bdata quality\\b|\\bdata integrity\\b|\\bdata consistency\\b/i,\r\n        \"Data Governance\": /\\bdata governance\\b|\\bgovernance\\b/i,\r\n        \"Permissions Management\": /\\bpermissions? management\\b|\\baccess control\\b/i,\r\n        \"Reporting & Analytics\": /\\breporting\\b|\\banalytics\\b|\\bdashboards?\\b/i,\r\n        \"Revenue Operations\": /\\brevenue operations\\b|\\brevops\\b/i,\r\n        \"Business Process Mapping\": /\\bprocess mapping\\b|\\bbpmn\\b/i,\r\n        \"ETL / ELT\": /\\betl\\b|\\belt\\b|\\bdata pipelines?\\b/i,\r\n        \"Lead Routing\": /\\blead routing\\b|\\blead assignment\\b/i,\r\n        \"Territory Management\": /\\bterritory management\\b/i\r\n    };\r\n\r\n    function detect(patterns, text) {\r\n        return Object.entries(patterns)\r\n            .filter(([name, regex]) => regex.test(text))\r\n            .map(([name]) => name);\r\n    }\r\n\r\n    const tools = detect(toolPatterns, description);\r\n    const capabilities = detect(\r\n        capabilityPatterns,\r\n        description\r\n    );\r\n\r\n    const sourceUrl = job.source_url ||\r\n        job.payload?.Job_URL__c ||\r\n        job.url;\r\n\r\n    const applicationLinks = [];\r\n\r\n    $(\"a[href]\").each(function () {\r\n        const href = $(this).attr(\"href\") || \"\";\r\n        const label = cleanText($(this).text());\r\n\r\n        if (\r\n            /apply|application|personio|greenhouse|lever|workday|ashby/i\r\n                .test(href + \" \" + label)\r\n        ) {\r\n            applicationLinks.push({\r\n                label,\r\n                url: absoluteUrl(href, sourceUrl)\r\n            });\r\n        }\r\n    });\r\n\r\n    const uniqueLinks = Array.from(\r\n        new Map(\r\n            applicationLinks.map(link => [\r\n                link.url,\r\n                link\r\n            ])\r\n        ).values()\r\n    );\r\n\r\n    const result = {\r\n        external_id: job.external_id,\r\n        title: job.payload?.Name || job.title || \"\",\r\n        company: job.payload?.Company__c || job.company || \"\",\r\n        fit_score: job.fit_score ?? job.score ?? 0,\r\n        source_url: sourceUrl,\r\n        description,\r\n        description_length: description.length,\r\n        matched_selector: matchedSelector,\r\n        tools,\r\n        capabilities,\r\n        application_links: uniqueLinks,\r\n        application_link_status: uniqueLinks.length\r\n            ? \"Potential links found - not verified\"\r\n            : \"No application link detected\",\r\n        enrichment_status: description.length > 100\r\n            ? \"Enriched\"\r\n            : \"Needs review\"\r\n    };\r\n\r\n    pm.test(\"Job description extracted\", function () {\r\n        pm.expect(description.length).to.be.above(100);\r\n    });\r\n\r\n    if (description.length <= 100) {\r\n        console.error(\r\n            \"Description missing for:\",\r\n            result.title\r\n        );\r\n\r\n        pm.execution.setNextRequest(null);\r\n    } else {\r\n\r\n        // Upsert into environment array by external ID\r\n        const position = existing.findIndex(\r\n            item => item.external_id === result.external_id\r\n        );\r\n\r\n        if (position >= 0) {\r\n            existing[position] = result;\r\n        } else {\r\n            existing.push(result);\r\n        }\r\n\r\n        pm.environment.set(\r\n            \"revops_enriched_jobs\",\r\n            JSON.stringify(existing)\r\n        );\r\n\r\n        pm.environment.set(\r\n            \"revops_enrichment_index\",\r\n            String(index + 1)\r\n        );\r\n\r\n        console.log(\r\n            \"ENRICHED:\",\r\n            index + 1,\r\n            \"/\",\r\n            jobs.length,\r\n            result.title\r\n        );\r\n\r\n        console.log(\"Tools:\", JSON.stringify(tools));\r\n        console.log(\r\n            \"Capabilities:\",\r\n            JSON.stringify(capabilities)\r\n        );\r\n\r\n        console.log(\r\n            \"Application links:\",\r\n            JSON.stringify(uniqueLinks)\r\n        );\r\n\r\n        console.log(\r\n            \"Total enriched:\",\r\n            existing.length\r\n        );\r\n    }\r\n}\r\n"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r\n/*\r\nREQUEST 22 - BEFORE REQUEST\r\nSelects one shortlisted job per iteration.\r\n*/\r\n\r\nconst raw = pm.environment.get(\"revops_final_import_jobs\");\r\n\r\nif (!raw) {\r\n    throw new Error(\"Missing revops_final_import_jobs\");\r\n}\r\n\r\nconst jobs = JSON.parse(raw);\r\n\r\nif (!Array.isArray(jobs) || !jobs.length) {\r\n    throw new Error(\"No jobs available for enrichment\");\r\n}\r\n\r\nconst index = Number(\r\n    pm.environment.get(\"revops_enrichment_index\") || 0\r\n);\r\n\r\nif (!Number.isInteger(index) || index < 0 || index >= jobs.length) {\r\n    throw new Error(\r\n        \"Invalid enrichment index: \" + index +\r\n        \". Expected 0 to \" + (jobs.length - 1)\r\n    );\r\n}\r\n\r\nconst job = jobs[index];\r\n\r\nconst url = job.source_url ||\r\n    job.original_url ||\r\n    job.payload?.Job_URL__c ||\r\n    job.url;\r\n\r\nif (!url || !/^https?:\\/\\//i.test(url)) {\r\n    throw new Error(\r\n        \"Missing valid URL for job at index \" + index\r\n    );\r\n}\r\n\r\npm.variables.set(\"revops_enrichment_url\", url);\r\npm.variables.set(\"revops_current_enrichment_index\", String(index));\r\n\r\nconsole.log(\r\n    \"Enriching job \" + (index + 1) +\r\n    \"/\" + jobs.length\r\n);\r\n\r\nconsole.log(\"Job:\", job.payload?.Name || job.title);\r\nconsole.log(\"URL:\", url);\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{revops_enrichment_url}}",
+              "host": [
+                "{{revops_enrichment_url}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "23 - RevOps Careers - Skills Demand Analysis",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "\r\n/*\r\nREQUEST 23 - REVOPS SKILLS DEMAND ANALYSIS\r\n\r\nUses enriched job descriptions from Request 22.\r\n\r\nProduces:\r\n1. Technology demand rankings\r\n2. Technical capability rankings\r\n3. Technology combinations\r\n4. Jobs requiring each skill (mentions)\r\n5. Skills development priorities\r\n\r\nNo Salesforce writes.\r\n*/\r\n\r\nfunction readArray(name) {\r\n    const raw = pm.environment.get(name);\r\n\r\n    if (!raw) {\r\n        throw new Error(\"Missing environment variable: \" + name);\r\n    }\r\n\r\n    const data = JSON.parse(raw);\r\n\r\n    if (!Array.isArray(data)) {\r\n        throw new Error(name + \" is not an array\");\r\n    }\r\n\r\n    return data;\r\n}\r\n\r\nconst jobs = readArray(\"revops_enriched_jobs\");\r\nconst expectedJobs = readArray(\"revops_final_import_jobs\");\r\n\r\nif (!jobs.length) {\r\n    throw new Error(\"No enriched jobs available\");\r\n}\r\n\r\nconsole.log(\"================================\");\r\nconsole.log(\"REVOPS SKILLS DEMAND ANALYSIS\");\r\nconsole.log(\"================================\");\r\n\r\nconsole.log(\"Jobs enriched:\", jobs.length);\r\nconsole.log(\"Jobs shortlisted:\", expectedJobs.length);\r\n\r\nif (jobs.length !== expectedJobs.length) {\r\n    console.warn(\r\n        \"WARNING: Enrichment is incomplete. \" +\r\n        \"Results represent only the jobs processed so far.\"\r\n    );\r\n}\r\n\r\n// Count how many jobs mention each skill\r\nfunction buildRanking(field) {\r\n    const counts = {};\r\n    const jobExamples = {};\r\n\r\n    jobs.forEach(job => {\r\n        const values = Array.isArray(job[field])\r\n            ? [...new Set(job[field])]\r\n            : [];\r\n\r\n        values.forEach(skill => {\r\n            counts[skill] = (counts[skill] || 0) + 1;\r\n\r\n            if (!jobExamples[skill]) {\r\n                jobExamples[skill] = [];\r\n            }\r\n\r\n            jobExamples[skill].push({\r\n                title: job.title,\r\n                company: job.company,\r\n                fit_score: job.fit_score,\r\n                url: job.source_url\r\n            });\r\n        });\r\n    });\r\n\r\n    return Object.entries(counts)\r\n        .map(([skill, count]) => ({\r\n            skill,\r\n            jobs: count,\r\n            percentage: Number(\r\n                (count / jobs.length * 100).toFixed(1)\r\n            ),\r\n            examples: jobExamples[skill]\r\n                .sort(\r\n                    (a, b) =>\r\n                        (b.fit_score || 0) -\r\n                        (a.fit_score || 0)\r\n                )\r\n                .slice(0, 5)\r\n        }))\r\n        .sort(\r\n            (a, b) =>\r\n                b.jobs - a.jobs ||\r\n                a.skill.localeCompare(b.skill)\r\n        );\r\n}\r\n\r\nconst toolsRanking = buildRanking(\"tools\");\r\nconst capabilitiesRanking = buildRanking(\"capabilities\");\r\n\r\n// Technology combinations\r\nconst combinations = {};\r\n\r\njobs.forEach(job => {\r\n    const tools = [...new Set(job.tools || [])].sort();\r\n\r\n    for (let i = 0; i < tools.length; i++) {\r\n        for (let j = i + 1; j < tools.length; j++) {\r\n            const pair = tools[i] + \" + \" + tools[j];\r\n\r\n            combinations[pair] =\r\n                (combinations[pair] || 0) + 1;\r\n        }\r\n    }\r\n});\r\n\r\nconst combinationsRanking = Object.entries(combinations)\r\n    .map(([pair, count]) => ({\r\n        pair,\r\n        jobs: count,\r\n        percentage: Number(\r\n            (count / jobs.length * 100).toFixed(1)\r\n        )\r\n    }))\r\n    .sort((a, b) => b.jobs - a.jobs);\r\n\r\n// Preliminary learning-status map\r\n// Edit this later based on actual proficiency.\r\nconst learningStatus = {\r\n    \"Salesforce\": \"Existing experience\",\r\n    \"HubSpot\": \"Existing foundation\",\r\n    \"Postman\": \"Currently practising\",\r\n    \"SQL\": \"Assess proficiency\",\r\n    \"Python\": \"Assess proficiency\",\r\n    \"n8n\": \"Assess proficiency\",\r\n    \"Clay\": \"Assess proficiency\",\r\n    \"Zapier\": \"Assess proficiency\",\r\n    \"Make\": \"Assess proficiency\",\r\n    \"Power BI\": \"Assess proficiency\",\r\n    \"Tableau\": \"Assess proficiency\",\r\n    \"Looker\": \"Assess proficiency\",\r\n    \"Chargebee\": \"Assess proficiency\"\r\n};\r\n\r\nconst developmentPriorities = toolsRanking.map(item => ({\r\n    skill: item.skill,\r\n    demand_jobs: item.jobs,\r\n    demand_percentage: item.percentage,\r\n    learning_status:\r\n        learningStatus[item.skill] || \"Assess proficiency\",\r\n    example_jobs: item.examples\r\n}));\r\n\r\nconst report = {\r\n    generated_at: new Date().toISOString(),\r\n    analyzed_jobs: jobs.length,\r\n    shortlisted_jobs: expectedJobs.length,\r\n    coverage_percentage: Number(\r\n        (jobs.length / expectedJobs.length * 100).toFixed(1)\r\n    ),\r\n    tools: toolsRanking,\r\n    capabilities: capabilitiesRanking,\r\n    combinations: combinationsRanking,\r\n    development_priorities: developmentPriorities,\r\n    methodology:\r\n        \"Keyword mentions in extracted job descriptions. \" +\r\n        \"Does not distinguish mandatory from preferred skills.\"\r\n};\r\n\r\n// Save reports\r\npm.environment.set(\r\n    \"revops_skills_demand_report\",\r\n    JSON.stringify(report)\r\n);\r\n\r\npm.environment.set(\r\n    \"revops_development_priorities\",\r\n    JSON.stringify(developmentPriorities)\r\n);\r\n\r\nfunction printRanking(title, items, limit) {\r\n    console.log(\"--------------------------------\");\r\n    console.log(title);\r\n    console.log(\"--------------------------------\");\r\n\r\n    items.slice(0, limit).forEach((item, index) => {\r\n        console.log(\r\n            (index + 1) + \". \" +\r\n            (item.skill || item.pair) +\r\n            \" | \" +\r\n            item.jobs + \" jobs | \" +\r\n            item.percentage + \"%\"\r\n        );\r\n    });\r\n}\r\n\r\nprintRanking(\r\n    \"TOP TECHNOLOGIES\",\r\n    toolsRanking,\r\n    30\r\n);\r\n\r\nprintRanking(\r\n    \"TOP TECHNICAL CAPABILITIES\",\r\n    capabilitiesRanking,\r\n    25\r\n);\r\n\r\nprintRanking(\r\n    \"TOP TECHNOLOGY COMBINATIONS\",\r\n    combinationsRanking,\r\n    15\r\n);\r\n\r\nconsole.log(\"--------------------------------\");\r\nconsole.log(\"DEVELOPMENT PRIORITIES\");\r\nconsole.log(\"--------------------------------\");\r\n\r\ndevelopmentPriorities.slice(0, 15).forEach(\r\n    (item, index) => {\r\n        console.log(\r\n            (index + 1) + \". \" +\r\n            item.skill +\r\n            \" | \" +\r\n            item.demand_jobs + \" jobs\" +\r\n            \" | \" +\r\n            item.learning_status\r\n        );\r\n    }\r\n);\r\n\r\nconsole.log(\"================================\");\r\nconsole.log(\"ANALYSIS COMPLETE\");\r\nconsole.log(\"Coverage:\", report.coverage_percentage + \"%\");\r\nconsole.log(\"================================\");\r\n\r\npm.test(\"Skills demand report generated\", function () {\r\n    pm.expect(report.analyzed_jobs).to.be.above(0);\r\n});\r\n\r\npm.test(\"Tools ranking generated\", function () {\r\n    pm.expect(report.tools).to.be.an(\"array\");\r\n});\r\n\r\npm.test(\"Capabilities ranking generated\", function () {\r\n    pm.expect(report.capabilities).to.be.an(\"array\");\r\n});\r\n"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://revopscareers.com/?feed=job_feed",
+              "protocol": "https",
+              "host": [
+                "revopscareers",
+                "com"
+              ],
+              "path": [
+                ""
+              ],
+              "query": [
+                {
+                  "key": "feed",
+                  "value": "job_feed"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "01 - Retrieve Remote Jobs",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\npm.test(\"API request is successful\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains a jobs list\", function () {\r\n    const data = pm.response.json();\r\n\r\n    pm.expect(data.jobs).to.be.an(\"array\");\r\n});\r\n\r\n\r\nconst data = pm.response.json();\r\n\r\nconst keywords = [\r\n    \"revenue operations\",\r\n    \"revops\",\r\n    \"gtm engineer\",\r\n    \"gtm systems\",\r\n    \"salesforce\",\r\n    \"crm manager\",\r\n    \"sales operations\",\r\n    \"sales automation\",\r\n    \"business improvement\",\r\n    \"operational excellence\",\r\n    \"process improvement\",\r\n    \"business process\"\r\n];\r\n\r\nconst jobs = data.jobs || [];\r\n\r\nconst matches = jobs.filter(job => {\r\n    const title = (job.title || \"\").toLowerCase();\r\n\r\n    return keywords.some(keyword =>\r\n        title.includes(keyword)\r\n    );\r\n});\r\n\r\nconsole.log(\"Total jobs retrieved:\", jobs.length);\r\nconsole.log(\"Matching jobs:\", matches.length);\r\n\r\n\r\nmatches.forEach(job => {\r\n    console.log(\r\n        \"Title:\", job.title,\r\n        \"| Company:\", job.company_name,\r\n        \"| Location:\", job.candidate_required_location,\r\n        \"| URL:\", job.url\r\n    );\r\n});\r\nconsole.log(\"Total jobs retrieved:\", jobs.length);\r\nconsole.log(\"Matching jobs:\", matches.length);\r\njobs.forEach(job => {\r\n    console.log(\r\n        \"JOB:\",\r\n        job.title,\r\n        \"| LOCATION:\",\r\n        job.candidate_required_location\r\n    );\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://remotive.com/api/remote-jobs",
+          "protocol": "https",
+          "host": [
+            "remotive",
+            "com"
+          ],
+          "path": [
+            "api",
+            "remote-jobs"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "02 - Remotive - Salesforce Jobs",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\nconst data = pm.response.json();\r\n\r\nconst jobs = data.jobs || [];\r\n\r\nconsole.log(\"API reported job count:\", data[\"job-count\"]);\r\nconsole.log(\"Jobs returned:\", jobs.length);\r\n\r\njobs.forEach(job => {\r\n    console.log(\r\n        \"JOB:\", job.title,\r\n        \"| COMPANY:\", job.company_name,\r\n        \"| LOCATION:\", job.candidate_required_location\r\n    );\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://remotive.com/api/remote-jobs?search=salesforce",
+          "protocol": "https",
+          "host": [
+            "remotive",
+            "com"
+          ],
+          "path": [
+            "api",
+            "remote-jobs"
+          ],
+          "query": [
+            {
+              "key": "search",
+              "value": "salesforce"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "salesforce_consumer_key_11th",
+      "secret": true
+    }
+  ]
+}
