@@ -52,18 +52,27 @@ Design and test a CRM integration that reduces manual lead handoff, supports dat
 
 The solution combines consultation scheduling, CRM data retrieval, conditional logic, and Salesforce REST API operations.
 ```mermaid
-flowchart TD
-    A["HubSpot consultation booking"]
-    B["HubSpot contact captured"]
-    C["n8n retrieves and filters contacts"]
-    D["Salesforce duplicate check"]
-    E{"Lead exists?"}
-    F["Skip creation"]
-    G["Create Salesforce Lead"]
 
-    A --> B --> C --> D --> E
-    E -->|Yes| F
-    E -->|No| G
+
+flowchart TD
+    A["Prospect books consultation in HubSpot Meetings"]
+    B["Google Calendar scheduling integration"]
+    C["Contact captured in HubSpot CRM"]
+    D["Manual trigger in n8n"]
+    E["HubSpot: Get Many Contacts"]
+    F["Filter: Select test contact"]
+    G["Salesforce REST API GET: SOQL duplicate check"]
+    H{"Existing Salesforce Lead?"}
+    I["Skip Lead creation"]
+    J["Salesforce REST API POST: Create Lead"]
+    K["Lead successfully created in Salesforce"]
+
+    A --> B --> C
+    C -.->|"Contact retrieved when workflow runs"| D
+    D --> E --> F --> G --> H
+    H -->|"Yes"| I
+    H -->|"No"| J --> K
+
 ```
 
 **Booking and lead capture:**
